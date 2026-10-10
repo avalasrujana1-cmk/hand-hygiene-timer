@@ -1,0 +1,940 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.33 (git sha1 2584903a060)
+
+
+-- Running command `read_verilog -sv src/synchronizer.v src/debounce.v src/tick_gen.v src/sat_counter.v src/wash_fsm.v src/top.v; hierarchy -check -top top; synth -top top -flatten; check; stat' --
+
+1. Executing Verilog-2005 frontend: src/synchronizer.v
+Parsing SystemVerilog input from `src/synchronizer.v' to AST representation.
+Generating RTLIL representation for module `\synchronizer'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: src/debounce.v
+Parsing SystemVerilog input from `src/debounce.v' to AST representation.
+Generating RTLIL representation for module `\debounce'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: src/tick_gen.v
+Parsing SystemVerilog input from `src/tick_gen.v' to AST representation.
+Generating RTLIL representation for module `\tick_gen'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: src/sat_counter.v
+Parsing SystemVerilog input from `src/sat_counter.v' to AST representation.
+Generating RTLIL representation for module `\sat_counter'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: src/wash_fsm.v
+Parsing SystemVerilog input from `src/wash_fsm.v' to AST representation.
+Generating RTLIL representation for module `\wash_fsm'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: src/top.v
+Parsing SystemVerilog input from `src/top.v' to AST representation.
+Generating RTLIL representation for module `\top'.
+Successfully finished Verilog frontend.
+
+7. Executing HIERARCHY pass (managing design hierarchy).
+
+7.1. Analyzing design hierarchy..
+Top module:  \top
+Used module:     \sat_counter
+Used module:     \wash_fsm
+Used module:     \tick_gen
+Used module:     \debounce
+Used module:     \synchronizer
+Parameter \W = 8
+
+7.2. Executing AST frontend in derive mode using pre-parsed AST for module `\sat_counter'.
+Parameter \W = 8
+Generating RTLIL representation for module `$paramod\sat_counter\W=s32'00000000000000000000000000001000'.
+Parameter \W = 8
+Found cached RTLIL representation for module `$paramod\sat_counter\W=s32'00000000000000000000000000001000'.
+Parameter \DIV = 32768
+Parameter \W = 15
+
+7.3. Executing AST frontend in derive mode using pre-parsed AST for module `\tick_gen'.
+Parameter \DIV = 32768
+Parameter \W = 15
+Generating RTLIL representation for module `$paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen'.
+Parameter \WIDTH = 11
+
+7.4. Executing AST frontend in derive mode using pre-parsed AST for module `\debounce'.
+Parameter \WIDTH = 11
+Generating RTLIL representation for module `$paramod\debounce\WIDTH=s32'00000000000000000000000000001011'.
+
+7.5. Analyzing design hierarchy..
+Top module:  \top
+Used module:     $paramod\sat_counter\W=s32'00000000000000000000000000001000
+Used module:     \wash_fsm
+Used module:     $paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen
+Used module:     $paramod\debounce\WIDTH=s32'00000000000000000000000000001011
+Used module:     \synchronizer
+
+7.6. Analyzing design hierarchy..
+Top module:  \top
+Used module:     $paramod\sat_counter\W=s32'00000000000000000000000000001000
+Used module:     \wash_fsm
+Used module:     $paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen
+Used module:     $paramod\debounce\WIDTH=s32'00000000000000000000000000001011
+Used module:     \synchronizer
+Removing unused module `\sat_counter'.
+Removing unused module `\tick_gen'.
+Removing unused module `\debounce'.
+Removed 3 unused modules.
+
+8. Executing SYNTH pass.
+
+8.1. Executing HIERARCHY pass (managing design hierarchy).
+
+8.1.1. Analyzing design hierarchy..
+Top module:  \top
+Used module:     $paramod\sat_counter\W=s32'00000000000000000000000000001000
+Used module:     \wash_fsm
+Used module:     $paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen
+Used module:     $paramod\debounce\WIDTH=s32'00000000000000000000000000001011
+Used module:     \synchronizer
+
+8.1.2. Analyzing design hierarchy..
+Top module:  \top
+Used module:     $paramod\sat_counter\W=s32'00000000000000000000000000001000
+Used module:     \wash_fsm
+Used module:     $paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen
+Used module:     $paramod\debounce\WIDTH=s32'00000000000000000000000000001011
+Used module:     \synchronizer
+Removed 0 unused modules.
+
+8.2. Executing PROC pass (convert processes to netlists).
+
+8.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+8.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$src/wash_fsm.v:112$36 in module wash_fsm.
+Marked 7 switch rules as full_case in process $proc$src/wash_fsm.v:42$18 in module wash_fsm.
+Marked 1 switch rules as full_case in process $proc$src/wash_fsm.v:33$17 in module wash_fsm.
+Marked 2 switch rules as full_case in process $proc$src/debounce.v:13$52 in module $paramod\debounce\WIDTH=s32'00000000000000000000000000001011.
+Marked 3 switch rules as full_case in process $proc$src/tick_gen.v:15$48 in module $paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen.
+Marked 2 switch rules as full_case in process $proc$src/sat_counter.v:11$43 in module $paramod\sat_counter\W=s32'00000000000000000000000000001000.
+Marked 1 switch rules as full_case in process $proc$src/synchronizer.v:10$1 in module synchronizer.
+Removed a total of 0 dead cases.
+
+8.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 7 redundant assignments.
+Promoted 4 assignments to connections.
+
+8.2.4. Executing PROC_INIT pass (extract init attributes).
+
+8.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\wash_fsm.$proc$src/wash_fsm.v:42$18'.
+Found async reset \rst_n in `$paramod\debounce\WIDTH=s32'00000000000000000000000000001011.$proc$src/debounce.v:13$52'.
+Found async reset \rst_n in `$paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen.$proc$src/tick_gen.v:15$48'.
+Found async reset \rst_n in `$paramod\sat_counter\W=s32'00000000000000000000000000001000.$proc$src/sat_counter.v:11$43'.
+Found async reset \rst_n in `\synchronizer.$proc$src/synchronizer.v:10$1'.
+
+8.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~19 debug messages>
+
+8.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\wash_fsm.$proc$src/wash_fsm.v:112$36'.
+     1/1: $1\led_progress[2:0]
+Creating decoders for process `\wash_fsm.$proc$src/wash_fsm.v:42$18'.
+     1/6: $0\bad_inc[0:0]
+     2/6: $0\good_inc[0:0]
+     3/6: $0\aux[5:0]
+     4/6: $0\secs[5:0]
+     5/6: $0\mode_r[1:0]
+     6/6: $0\state[2:0]
+Creating decoders for process `\wash_fsm.$proc$src/wash_fsm.v:33$17'.
+     1/3: $1\t2[5:0]
+     2/3: $1\t1[5:0]
+     3/3: $1\target[5:0]
+Creating decoders for process `$paramod\debounce\WIDTH=s32'00000000000000000000000000001011.$proc$src/debounce.v:13$52'.
+     1/2: $0\cnt[10:0]
+     2/2: $0\out[0:0]
+Creating decoders for process `$paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen.$proc$src/tick_gen.v:15$48'.
+     1/2: $0\tick[0:0]
+     2/2: $0\cnt[14:0]
+Creating decoders for process `$paramod\sat_counter\W=s32'00000000000000000000000000001000.$proc$src/sat_counter.v:11$43'.
+     1/1: $0\count[7:0]
+Creating decoders for process `\synchronizer.$proc$src/synchronizer.v:10$1'.
+     1/2: $0\ff2[0:0]
+     2/2: $0\ff1[0:0]
+
+8.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\wash_fsm.\led_progress' from process `\wash_fsm.$proc$src/wash_fsm.v:112$36'.
+No latch inferred for signal `\wash_fsm.\target' from process `\wash_fsm.$proc$src/wash_fsm.v:33$17'.
+No latch inferred for signal `\wash_fsm.\t1' from process `\wash_fsm.$proc$src/wash_fsm.v:33$17'.
+No latch inferred for signal `\wash_fsm.\t2' from process `\wash_fsm.$proc$src/wash_fsm.v:33$17'.
+
+8.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\wash_fsm.\good_inc' using process `\wash_fsm.$proc$src/wash_fsm.v:42$18'.
+  created $adff cell `$procdff$204' with positive edge clock and negative level reset.
+Creating register for signal `\wash_fsm.\bad_inc' using process `\wash_fsm.$proc$src/wash_fsm.v:42$18'.
+  created $adff cell `$procdff$205' with positive edge clock and negative level reset.
+Creating register for signal `\wash_fsm.\state' using process `\wash_fsm.$proc$src/wash_fsm.v:42$18'.
+  created $adff cell `$procdff$206' with positive edge clock and negative level reset.
+Creating register for signal `\wash_fsm.\mode_r' using process `\wash_fsm.$proc$src/wash_fsm.v:42$18'.
+  created $adff cell `$procdff$207' with positive edge clock and negative level reset.
+Creating register for signal `\wash_fsm.\secs' using process `\wash_fsm.$proc$src/wash_fsm.v:42$18'.
+  created $adff cell `$procdff$208' with positive edge clock and negative level reset.
+Creating register for signal `\wash_fsm.\aux' using process `\wash_fsm.$proc$src/wash_fsm.v:42$18'.
+  created $adff cell `$procdff$209' with positive edge clock and negative level reset.
+Creating register for signal `$paramod\debounce\WIDTH=s32'00000000000000000000000000001011.\out' using process `$paramod\debounce\WIDTH=s32'00000000000000000000000000001011.$proc$src/debounce.v:13$52'.
+  created $adff cell `$procdff$210' with positive edge clock and negative level reset.
+Creating register for signal `$paramod\debounce\WIDTH=s32'00000000000000000000000000001011.\cnt' using process `$paramod\debounce\WIDTH=s32'00000000000000000000000000001011.$proc$src/debounce.v:13$52'.
+  created $adff cell `$procdff$211' with positive edge clock and negative level reset.
+Creating register for signal `$paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen.\cnt' using process `$paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen.$proc$src/tick_gen.v:15$48'.
+  created $adff cell `$procdff$212' with positive edge clock and negative level reset.
+Creating register for signal `$paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen.\tick' using process `$paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen.$proc$src/tick_gen.v:15$48'.
+  created $adff cell `$procdff$213' with positive edge clock and negative level reset.
+Creating register for signal `$paramod\sat_counter\W=s32'00000000000000000000000000001000.\count' using process `$paramod\sat_counter\W=s32'00000000000000000000000000001000.$proc$src/sat_counter.v:11$43'.
+  created $adff cell `$procdff$214' with positive edge clock and negative level reset.
+Creating register for signal `\synchronizer.\ff1' using process `\synchronizer.$proc$src/synchronizer.v:10$1'.
+  created $adff cell `$procdff$215' with positive edge clock and negative level reset.
+Creating register for signal `\synchronizer.\ff2' using process `\synchronizer.$proc$src/synchronizer.v:10$1'.
+  created $adff cell `$procdff$216' with positive edge clock and negative level reset.
+
+8.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+8.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\wash_fsm.$proc$src/wash_fsm.v:112$36'.
+Removing empty process `wash_fsm.$proc$src/wash_fsm.v:112$36'.
+Found and cleaned up 11 empty switches in `\wash_fsm.$proc$src/wash_fsm.v:42$18'.
+Removing empty process `wash_fsm.$proc$src/wash_fsm.v:42$18'.
+Found and cleaned up 1 empty switch in `\wash_fsm.$proc$src/wash_fsm.v:33$17'.
+Removing empty process `wash_fsm.$proc$src/wash_fsm.v:33$17'.
+Found and cleaned up 2 empty switches in `$paramod\debounce\WIDTH=s32'00000000000000000000000000001011.$proc$src/debounce.v:13$52'.
+Removing empty process `$paramod\debounce\WIDTH=s32'00000000000000000000000000001011.$proc$src/debounce.v:13$52'.
+Found and cleaned up 2 empty switches in `$paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen.$proc$src/tick_gen.v:15$48'.
+Removing empty process `$paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen.$proc$src/tick_gen.v:15$48'.
+Found and cleaned up 2 empty switches in `$paramod\sat_counter\W=s32'00000000000000000000000000001000.$proc$src/sat_counter.v:11$43'.
+Removing empty process `$paramod\sat_counter\W=s32'00000000000000000000000000001000.$proc$src/sat_counter.v:11$43'.
+Removing empty process `synchronizer.$proc$src/synchronizer.v:10$1'.
+Cleaned up 19 empty switches.
+
+8.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+Optimizing module wash_fsm.
+<suppressed ~11 debug messages>
+Optimizing module $paramod\debounce\WIDTH=s32'00000000000000000000000000001011.
+Optimizing module $paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen.
+Optimizing module $paramod\sat_counter\W=s32'00000000000000000000000000001000.
+Optimizing module synchronizer.
+
+8.3. Executing FLATTEN pass (flatten design).
+Deleting now unused module wash_fsm.
+Deleting now unused module $paramod\debounce\WIDTH=s32'00000000000000000000000000001011.
+Deleting now unused module $paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen.
+Deleting now unused module $paramod\sat_counter\W=s32'00000000000000000000000000001000.
+Deleting now unused module synchronizer.
+<suppressed ~6 debug messages>
+
+8.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+8.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+Removed 8 unused cells and 76 unused wires.
+<suppressed ~9 debug messages>
+
+8.6. Executing CHECK pass (checking for obvious problems).
+Checking module top...
+Found and reported 0 problems.
+
+8.7. Executing OPT pass (performing simple optimizations).
+
+8.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+8.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+<suppressed ~81 debug messages>
+Removed a total of 27 cells.
+
+8.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~16 debug messages>
+
+8.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+8.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+8.7.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.7.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+Removed 0 unused cells and 25 unused wires.
+<suppressed ~1 debug messages>
+
+8.7.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+8.7.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+8.7.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~16 debug messages>
+
+8.7.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+8.7.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+8.7.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.7.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+
+8.7.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+8.7.16. Finished OPT passes. (There is nothing left to do.)
+
+8.8. Executing FSM pass (extract and optimize FSM).
+
+8.8.1. Executing FSM_DETECT pass (finding FSMs in design).
+Not marking top.u_fsm.state as FSM state register:
+    Circuit seems to be self-resetting.
+
+8.8.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+8.8.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+8.8.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+
+8.8.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+8.8.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+8.8.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+8.8.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+8.9. Executing OPT pass (performing simple optimizations).
+
+8.9.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+8.9.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+8.9.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~16 debug messages>
+
+8.9.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+8.9.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+8.9.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $flatten\u_good.$procdff$214 ($adff) from module top (D = $flatten\u_good.$0\count[7:0], Q = \u_good.count).
+Adding EN signal on $flatten\u_fsm.$procdff$209 ($adff) from module top (D = $flatten\u_fsm.$0\aux[5:0], Q = \u_fsm.aux).
+Adding EN signal on $flatten\u_fsm.$procdff$208 ($adff) from module top (D = $flatten\u_fsm.$0\secs[5:0], Q = \u_fsm.secs).
+Adding EN signal on $flatten\u_fsm.$procdff$207 ($adff) from module top (D = \mode_sel, Q = \u_fsm.mode_r).
+Adding EN signal on $flatten\u_fsm.$procdff$206 ($adff) from module top (D = $flatten\u_fsm.$0\state[2:0], Q = \u_fsm.state).
+Adding EN signal on $flatten\u_deb.$procdff$210 ($adff) from module top (D = \u_sync.ff2, Q = \u_deb.out).
+Adding EN signal on $flatten\u_bad.$procdff$214 ($adff) from module top (D = $flatten\u_bad.$0\count[7:0], Q = \u_bad.count).
+
+8.9.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+Removed 4 unused cells and 4 unused wires.
+<suppressed ~5 debug messages>
+
+8.9.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+<suppressed ~4 debug messages>
+
+8.9.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+8.9.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~14 debug messages>
+
+8.9.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+    New input vector for $reduce_and cell $auto$opt_dff.cc:220:make_patterns_logic$270: { $auto$rtlil.cc:2401:Not$268 \u_deb.cnt }
+  Optimizing cells in module \top.
+Performed a total of 1 changes.
+
+8.9.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+<suppressed ~9 debug messages>
+Removed a total of 3 cells.
+
+8.9.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.9.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+Removed 0 unused cells and 3 unused wires.
+<suppressed ~1 debug messages>
+
+8.9.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+8.9.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+8.9.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~14 debug messages>
+
+8.9.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+8.9.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+8.9.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.9.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+
+8.9.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+8.9.23. Finished OPT passes. (There is nothing left to do.)
+
+8.10. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 4) from port B of cell top.$auto$opt_dff.cc:195:make_patterns_logic$239 ($ne).
+Removed top 1 bits (of 3) from port B of cell top.$auto$opt_dff.cc:195:make_patterns_logic$224 ($ne).
+Removed top 1 bits (of 4) from port B of cell top.$auto$opt_dff.cc:195:make_patterns_logic$253 ($ne).
+Removed top 2 bits (of 6) from mux cell top.$flatten\u_fsm.$procmux$170 ($pmux).
+Removed top 1 bits (of 2) from port B of cell top.$flatten\u_fsm.$procmux$168_CMP0 ($eq).
+Removed top 1 bits (of 6) from mux cell top.$flatten\u_fsm.$procmux$166 ($pmux).
+Removed top 1 bits (of 3) from port B of cell top.$auto$opt_dff.cc:195:make_patterns_logic$263 ($ne).
+Removed top 2 bits (of 3) from port B of cell top.$flatten\u_fsm.$procmux$109_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell top.$flatten\u_fsm.$procmux$102_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell top.$flatten\u_fsm.$ge$src/wash_fsm.v:116$41 ($ge).
+Removed top 2 bits (of 6) from port B of cell top.$flatten\u_fsm.$ge$src/wash_fsm.v:116$40 ($ge).
+Removed top 1 bits (of 3) from port B of cell top.$flatten\u_fsm.$eq$src/wash_fsm.v:108$31 ($eq).
+Removed top 4 bits (of 6) from port B of cell top.$flatten\u_fsm.$ge$src/wash_fsm.v:80$24 ($ge).
+Removed top 5 bits (of 6) from port B of cell top.$flatten\u_fsm.$add$src/wash_fsm.v:80$23 ($add).
+Removed top 5 bits (of 6) from port B of cell top.$flatten\u_fsm.$add$src/wash_fsm.v:72$22 ($add).
+
+8.11. Executing PEEPOPT pass (run peephole optimizers).
+
+8.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+
+8.13. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module top:
+  creating $macc model for $flatten\u_bad.$add$src/sat_counter.v:17$47 ($add).
+  creating $macc model for $flatten\u_deb.$add$src/debounce.v:20$55 ($add).
+  creating $macc model for $flatten\u_fsm.$add$src/wash_fsm.v:72$22 ($add).
+  creating $macc model for $flatten\u_fsm.$add$src/wash_fsm.v:80$23 ($add).
+  creating $macc model for $flatten\u_good.$add$src/sat_counter.v:17$47 ($add).
+  creating $macc model for $flatten\u_tick.$add$src/tick_gen.v:26$51 ($add).
+  creating $alu model for $macc $flatten\u_tick.$add$src/tick_gen.v:26$51.
+  creating $alu model for $macc $flatten\u_good.$add$src/sat_counter.v:17$47.
+  creating $alu model for $macc $flatten\u_fsm.$add$src/wash_fsm.v:80$23.
+  creating $alu model for $macc $flatten\u_fsm.$add$src/wash_fsm.v:72$22.
+  creating $alu model for $macc $flatten\u_deb.$add$src/debounce.v:20$55.
+  creating $alu model for $macc $flatten\u_bad.$add$src/sat_counter.v:17$47.
+  creating $alu model for $flatten\u_fsm.$ge$src/wash_fsm.v:116$40 ($ge): new $alu
+  creating $alu model for $flatten\u_fsm.$ge$src/wash_fsm.v:116$41 ($ge): new $alu
+  creating $alu model for $flatten\u_fsm.$ge$src/wash_fsm.v:116$42 ($ge): new $alu
+  creating $alu model for $flatten\u_fsm.$ge$src/wash_fsm.v:80$24 ($ge): new $alu
+  creating $alu cell for $flatten\u_fsm.$ge$src/wash_fsm.v:80$24: $auto$alumacc.cc:485:replace_alu$278
+  creating $alu cell for $flatten\u_fsm.$ge$src/wash_fsm.v:116$42: $auto$alumacc.cc:485:replace_alu$287
+  creating $alu cell for $flatten\u_fsm.$ge$src/wash_fsm.v:116$41: $auto$alumacc.cc:485:replace_alu$296
+  creating $alu cell for $flatten\u_fsm.$ge$src/wash_fsm.v:116$40: $auto$alumacc.cc:485:replace_alu$305
+  creating $alu cell for $flatten\u_bad.$add$src/sat_counter.v:17$47: $auto$alumacc.cc:485:replace_alu$314
+  creating $alu cell for $flatten\u_deb.$add$src/debounce.v:20$55: $auto$alumacc.cc:485:replace_alu$317
+  creating $alu cell for $flatten\u_fsm.$add$src/wash_fsm.v:72$22: $auto$alumacc.cc:485:replace_alu$320
+  creating $alu cell for $flatten\u_fsm.$add$src/wash_fsm.v:80$23: $auto$alumacc.cc:485:replace_alu$323
+  creating $alu cell for $flatten\u_good.$add$src/sat_counter.v:17$47: $auto$alumacc.cc:485:replace_alu$326
+  creating $alu cell for $flatten\u_tick.$add$src/tick_gen.v:26$51: $auto$alumacc.cc:485:replace_alu$329
+  created 10 $alu and 0 $macc cells.
+
+8.14. Executing SHARE pass (SAT-based resource sharing).
+
+8.15. Executing OPT pass (performing simple optimizations).
+
+8.15.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+8.15.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+8.15.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~14 debug messages>
+
+8.15.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+8.15.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+8.15.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.15.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+Removed 0 unused cells and 4 unused wires.
+<suppressed ~1 debug messages>
+
+8.15.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+8.15.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+8.15.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~14 debug messages>
+
+8.15.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+8.15.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+8.15.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.15.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+
+8.15.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+8.15.16. Finished OPT passes. (There is nothing left to do.)
+
+8.16. Executing MEMORY pass.
+
+8.16.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+8.16.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+8.16.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+8.16.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+8.16.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+8.16.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+
+8.16.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+8.16.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+8.16.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+
+8.16.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+8.17. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+
+8.18. Executing OPT pass (performing simple optimizations).
+
+8.18.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+<suppressed ~27 debug messages>
+
+8.18.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+8.18.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.18.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+Removed 0 unused cells and 21 unused wires.
+<suppressed ~1 debug messages>
+
+8.18.5. Finished fast OPT passes.
+
+8.19. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+8.20. Executing OPT pass (performing simple optimizations).
+
+8.20.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+8.20.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+8.20.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~13 debug messages>
+
+8.20.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+    New ctrl vector for $pmux cell $flatten\u_fsm.$procmux$138: { \u_fsm.tick_clear $flatten\u_fsm.$procmux$109_CMP $flatten\u_fsm.$procmux$102_CMP $flatten\u_fsm.$procmux$145_CTRL }
+    Consolidated identical input bits for $mux cell $flatten\u_fsm.$procmux$152:
+      Old ports: A=3'100, B=3'001, Y=$flatten\u_fsm.$procmux$152_Y
+      New ports: A=2'10, B=2'01, Y={ $flatten\u_fsm.$procmux$152_Y [2] $flatten\u_fsm.$procmux$152_Y [0] }
+      New connections: $flatten\u_fsm.$procmux$152_Y [1] = 1'0
+    Consolidated identical input bits for $mux cell $flatten\u_fsm.$procmux$159:
+      Old ports: A=3'010, B=3'011, Y=$flatten\u_fsm.$procmux$159_Y
+      New ports: A=1'0, B=1'1, Y=$flatten\u_fsm.$procmux$159_Y [0]
+      New connections: $flatten\u_fsm.$procmux$159_Y [2:1] = 2'01
+    Consolidated identical input bits for $pmux cell $flatten\u_fsm.$procmux$174:
+      Old ports: A=6'010100, B=12'011110101000, Y=\u_fsm.target
+      New ports: A=4'0010, B=8'01111100, Y={ \u_fsm.target [5] \u_fsm.target [3:1] }
+      New connections: { \u_fsm.target [4] \u_fsm.target [0] } = { \u_fsm.target [2] 1'0 }
+    New ctrl vector for $pmux cell $flatten\u_fsm.$procmux$92: { $flatten\u_fsm.$procmux$102_CMP $flatten\u_fsm.$procmux$145_CTRL }
+  Optimizing cells in module \top.
+Performed a total of 5 changes.
+
+8.20.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+8.20.6. Executing OPT_SHARE pass.
+
+8.20.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.20.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+
+8.20.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+<suppressed ~1 debug messages>
+
+8.20.10. Rerunning OPT passes. (Maybe there is more to do..)
+
+8.20.11. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~13 debug messages>
+
+8.20.12. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+8.20.13. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+8.20.14. Executing OPT_SHARE pass.
+
+8.20.15. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.20.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+8.20.17. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+8.20.18. Rerunning OPT passes. (Maybe there is more to do..)
+
+8.20.19. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~13 debug messages>
+
+8.20.20. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+8.20.21. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+8.20.22. Executing OPT_SHARE pass.
+
+8.20.23. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.20.24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+
+8.20.25. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+8.20.26. Finished OPT passes. (There is nothing left to do.)
+
+8.21. Executing TECHMAP pass (map to technology primitives).
+
+8.21.1. Executing Verilog-2005 frontend: /usr/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+8.21.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $adff.
+Using extmapper simplemap for cells of type $adffe.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $reduce_and.
+Using template $paramod$32efbfac1c4dc57230cf86180788fdfd12e3b511\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $reduce_or.
+Using template $paramod$bf2533632d512eac76dd186c0da49367e29b8e98\_90_pmux for cells of type $pmux.
+Using template $paramod$70d30c21ff772b34d0d1da2801fbd781dc3c70e4\_90_pmux for cells of type $pmux.
+Using template $paramod$9970e6a829a899c1fae39c88305c3c80d98a6bfd\_90_alu for cells of type $alu.
+Using template $paramod$d31bf4d7d72e59528d18fbd4f322e9d608532043\_90_pmux for cells of type $pmux.
+Using template $paramod$ed0bb9616228df1e6c226f91f8133e751815f1b1\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $and.
+Using template $paramod$e04283ca12514baf3d204c6994bec8f178dd89f8\_90_alu for cells of type $alu.
+Using template $paramod$5bb6c3f3e4a5303115f41a182fad517280ea0b25\_90_alu for cells of type $alu.
+Using template $paramod$c3cd1564c35d873179656addd6052d7ea8b6d991\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $logic_or.
+Using extmapper simplemap for cells of type $logic_not.
+Using template $paramod$00298f3f8094950cb9a5ff2fda48d0d8bde8806c\_90_alu for cells of type $alu.
+Using template $paramod$3b7577489eb4433b1d5620cab7f3794743dee5ea\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $logic_and.
+Using template $paramod$2f5fb04daf2da94d981bf9455fa4454c6ec8b705\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000000110 for cells of type $lcu.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000001000 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000001111 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000001011 for cells of type $lcu.
+Using extmapper simplemap for cells of type $or.
+No more expansions possible.
+<suppressed ~1213 debug messages>
+
+8.22. Executing OPT pass (performing simple optimizations).
+
+8.22.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+<suppressed ~550 debug messages>
+
+8.22.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+<suppressed ~357 debug messages>
+Removed a total of 119 cells.
+
+8.22.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.22.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+Removed 63 unused cells and 629 unused wires.
+<suppressed ~64 debug messages>
+
+8.22.5. Finished fast OPT passes.
+
+8.23. Executing ABC pass (technology mapping using ABC).
+
+8.23.1. Extracting gate netlist of module `\top' to `<abc-temp-dir>/input.blif'..
+Extracted 475 gates and 542 wires to a netlist network with 65 inputs and 73 outputs.
+
+8.23.1.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: Entered genlib library with 13 gates from file "<abc-temp-dir>/stdcells.genlib".
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+8.23.1.2. Re-integrating ABC results.
+ABC RESULTS:               MUX cells:        1
+ABC RESULTS:             ORNOT cells:       19
+ABC RESULTS:               NOT cells:       15
+ABC RESULTS:               AND cells:       16
+ABC RESULTS:               NOR cells:       13
+ABC RESULTS:              XNOR cells:       28
+ABC RESULTS:               XOR cells:       34
+ABC RESULTS:              NAND cells:       41
+ABC RESULTS:                OR cells:       70
+ABC RESULTS:            ANDNOT cells:      157
+ABC RESULTS:        internal signals:      404
+ABC RESULTS:           input signals:       65
+ABC RESULTS:          output signals:       73
+Removing temp directory.
+
+8.24. Executing OPT pass (performing simple optimizations).
+
+8.24.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+<suppressed ~1 debug messages>
+
+8.24.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+<suppressed ~6 debug messages>
+Removed a total of 2 cells.
+
+8.24.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.24.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+Removed 0 unused cells and 287 unused wires.
+<suppressed ~1 debug messages>
+
+8.24.5. Finished fast OPT passes.
+
+8.25. Executing HIERARCHY pass (managing design hierarchy).
+
+8.25.1. Analyzing design hierarchy..
+Top module:  \top
+
+8.25.2. Analyzing design hierarchy..
+Top module:  \top
+Removed 0 unused modules.
+
+8.26. Printing statistics.
+
+=== top ===
+
+   Number of wires:                441
+   Number of wire bits:            534
+   Number of public wires:          62
+   Number of public wire bits:     148
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                457
+     $_ANDNOT_                     155
+     $_AND_                         16
+     $_DFFE_PN0P_                   34
+     $_DFF_PN0_                     31
+     $_MUX_                          1
+     $_NAND_                        41
+     $_NOR_                         13
+     $_NOT_                         15
+     $_ORNOT_                       19
+     $_OR_                          70
+     $_XNOR_                        28
+     $_XOR_                         34
+
+8.27. Executing CHECK pass (checking for obvious problems).
+Checking module top...
+Found and reported 0 problems.
+
+9. Executing CHECK pass (checking for obvious problems).
+Checking module top...
+Found and reported 0 problems.
+
+10. Printing statistics.
+
+=== top ===
+
+   Number of wires:                441
+   Number of wire bits:            534
+   Number of public wires:          62
+   Number of public wire bits:     148
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                457
+     $_ANDNOT_                     155
+     $_AND_                         16
+     $_DFFE_PN0P_                   34
+     $_DFF_PN0_                     31
+     $_MUX_                          1
+     $_NAND_                        41
+     $_NOR_                         13
+     $_NOT_                         15
+     $_ORNOT_                       19
+     $_OR_                          70
+     $_XNOR_                        28
+     $_XOR_                         34
+
+End of script. Logfile hash: 45016fea10, CPU: user 0.52s system 0.03s, MEM: 19.25 MB peak
+Yosys 0.33 (git sha1 2584903a060)
+Time spent: 25% 27x opt_expr (0 sec), 15% 23x opt_clean (0 sec), ...
