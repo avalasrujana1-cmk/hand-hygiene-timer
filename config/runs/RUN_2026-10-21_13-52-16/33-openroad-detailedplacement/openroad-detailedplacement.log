@@ -1,0 +1,39 @@
+Reading OpenROAD database at '/workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-52-16/31-openroad-repairdesignpostgpl/top.odb'…
+Reading library file at '/home/codespace/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib'…
+Reading design constraints file at '/nix/store/ss2cw3sxbrwwx9jl0rrppbw4kgcmgi2n-python3-3.11.9-env/lib/python3.11/site-packages/openlane/scripts/base.sdc'…
+[INFO] Using clock clk…
+[INFO] Setting output delay to: 10
+[INFO] Setting input delay to: 10
+[INFO] Setting load to: 0.033442
+[INFO] Setting clock uncertainty to: 0.25
+[INFO] Setting clock transition to: 0.1499999999999999944488848768742172978818416595458984375
+[INFO] Setting timing derate to: 5%
+Placement Analysis
+---------------------------------
+total displacement          0.0 u
+average displacement        0.0 u
+max displacement            0.0 u
+original HPWL            4410.2 u
+legalized HPWL           4550.9 u
+delta HPWL                    3 %
+
+[INFO DPL-0020] Mirrored 116 instances
+[INFO DPL-0021] HPWL before            4550.9 u
+[INFO DPL-0022] HPWL after             4410.2 u
+[INFO DPL-0023] HPWL delta               -3.1 %
+Setting global connections for newly added cells…
+[INFO] Setting global connections...
+Updating metrics…
+Cell type report:                       Count       Area
+  Fill cell                                68     255.24
+  Tap cell                                126     157.65
+  Timing Repair Buffer                     39     212.70
+  Inverter                                 12      45.04
+  Sequential cell                          65    1651.58
+  Multi-Input combinational cell          197    1403.85
+  Total                                   507    3726.07
+Writing OpenROAD database to '/workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-52-16/33-openroad-detailedplacement/top.odb'…
+Writing netlist to '/workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-52-16/33-openroad-detailedplacement/top.nl.v'…
+Writing powered netlist to '/workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-52-16/33-openroad-detailedplacement/top.pnl.v'…
+Writing layout to '/workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-52-16/33-openroad-detailedplacement/top.def'…
+Writing timing constraints to '/workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-52-16/33-openroad-detailedplacement/top.sdc'…

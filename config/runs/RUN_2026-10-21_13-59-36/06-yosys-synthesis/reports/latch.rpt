@@ -1,0 +1,6 @@
+
+20. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\wash_fsm.\led_progress' from process `\wash_fsm.$proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:112$25'.
+No latch inferred for signal `\wash_fsm.\target' from process `\wash_fsm.$proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:33$6'.
+No latch inferred for signal `\wash_fsm.\t1' from process `\wash_fsm.$proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:33$6'.
+No latch inferred for signal `\wash_fsm.\t2' from process `\wash_fsm.$proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:33$6'.

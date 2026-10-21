@@ -1,0 +1,79 @@
+Reading timing models for corner nom_tt_025C_1v80…
+Reading timing library for the 'nom_tt_025C_1v80' corner at '/home/codespace/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib'…
+Reading timing models for corner nom_ff_n40C_1v95…
+Reading timing library for the 'nom_ff_n40C_1v95' corner at '/home/codespace/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib'…
+Reading timing models for corner nom_ss_100C_1v60…
+Reading timing library for the 'nom_ss_100C_1v60' corner at '/home/codespace/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib'…
+Reading OpenROAD database at '/workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-59-36/27-openroad-globalplacement/top.odb'…
+Reading design constraints file at '/workspaces/hand-hygiene-timer/config/top.sdc'…
+[INFO] No information on clock propagation in input SDC file-- propagating all clocks.
+[INFO] Setting RC values…
+[INFO RSZ-0027] Inserted 5 input buffers.
+[INFO RSZ-0028] Inserted 22 output buffers.
+[INFO RSZ-0058] Using max wire length 6335um.
+Iteration | Resized | Buffers | Nets repaired | Remaining
+---------------------------------------------------------
+        0 |       0 |       0 |             0 |       307
+       10 |       5 |       0 |             0 |       297
+       20 |      14 |       0 |             0 |       287
+       30 |      22 |       0 |             0 |       277
+       40 |      30 |       0 |             0 |       267
+       50 |      37 |       0 |             0 |       257
+       60 |      47 |       0 |             0 |       247
+       70 |      51 |       0 |             0 |       237
+       80 |      58 |       0 |             0 |       227
+       90 |      67 |       0 |             0 |       217
+      100 |      77 |       0 |             0 |       207
+      110 |      85 |       0 |             0 |       197
+      120 |      95 |       0 |             0 |       187
+      130 |     105 |       0 |             0 |       177
+      140 |     113 |       0 |             0 |       167
+      150 |     121 |       0 |             0 |       157
+      160 |     130 |       0 |             0 |       147
+      170 |     138 |       0 |             0 |       137
+      180 |     147 |       0 |             0 |       127
+      190 |     157 |       0 |             0 |       117
+      200 |     166 |       0 |             0 |       107
+      210 |     175 |       0 |             0 |        97
+      220 |     177 |       0 |             0 |        87
+      230 |     177 |       0 |             0 |        77
+      240 |     184 |       0 |             0 |        67
+      250 |     191 |       0 |             0 |        57
+      260 |     199 |       0 |             0 |        47
+      270 |     209 |       0 |             0 |        37
+      280 |     219 |       0 |             0 |        27
+      290 |     226 |       0 |             0 |        17
+      300 |     236 |       0 |             0 |         7
+    final |     238 |       0 |             0 |         0
+---------------------------------------------------------
+[INFO RSZ-0039] Resized 238 instances.
+Placement Analysis
+---------------------------------
+total displacement        715.4 u
+average displacement        1.4 u
+max displacement            9.8 u
+original HPWL            3417.5 u
+legalized HPWL           4032.4 u
+delta HPWL                   18 %
+
+[INFO DPL-0020] Mirrored 107 instances
+[INFO DPL-0021] HPWL before            4032.4 u
+[INFO DPL-0022] HPWL after             3872.7 u
+[INFO DPL-0023] HPWL delta               -4.0 %
+[INFO] Setting RC values…
+Setting global connections for newly added cells…
+[INFO] Setting global connections...
+Updating metrics…
+Cell type report:                       Count       Area
+  Fill cell                                68     255.24
+  Tap cell                                126     157.65
+  Timing Repair Buffer                     27     118.86
+  Inverter                                 12      45.04
+  Sequential cell                          65    1652.84
+  Multi-Input combinational cell          197    1430.12
+  Total                                   495    3659.76
+Writing OpenROAD database to '/workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-59-36/31-openroad-repairdesignpostgpl/top.odb'…
+Writing netlist to '/workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-59-36/31-openroad-repairdesignpostgpl/top.nl.v'…
+Writing powered netlist to '/workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-59-36/31-openroad-repairdesignpostgpl/top.pnl.v'…
+Writing layout to '/workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-59-36/31-openroad-repairdesignpostgpl/top.def'…
+Writing timing constraints to '/workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-59-36/31-openroad-repairdesignpostgpl/top.sdc'…

@@ -1,0 +1,74 @@
+###############################################################################
+# Created by write_sdc
+###############################################################################
+current_design top
+###############################################################################
+# Timing Constraints
+###############################################################################
+create_clock -name clk -period 50.0000 [get_ports {clk}]
+set_clock_transition 0.1500 [get_clocks {clk}]
+set_clock_uncertainty 0.2500 clk
+set_input_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {clear_log}]
+set_input_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {mode_sel[0]}]
+set_input_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {mode_sel[1]}]
+set_input_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {rst_n}]
+set_input_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {sensor_in}]
+set_output_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {alarm_short}]
+set_output_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {bad_cnt[0]}]
+set_output_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {bad_cnt[1]}]
+set_output_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {bad_cnt[2]}]
+set_output_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {bad_cnt[3]}]
+set_output_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {bad_cnt[4]}]
+set_output_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {bad_cnt[5]}]
+set_output_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {bad_cnt[6]}]
+set_output_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {bad_cnt[7]}]
+set_output_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {buzzer}]
+set_output_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {good_cnt[0]}]
+set_output_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {good_cnt[1]}]
+set_output_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {good_cnt[2]}]
+set_output_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {good_cnt[3]}]
+set_output_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {good_cnt[4]}]
+set_output_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {good_cnt[5]}]
+set_output_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {good_cnt[6]}]
+set_output_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {good_cnt[7]}]
+set_output_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {led_done}]
+set_output_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {led_progress[0]}]
+set_output_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {led_progress[1]}]
+set_output_delay 10.0000 -clock [get_clocks {clk}] -add_delay [get_ports {led_progress[2]}]
+###############################################################################
+# Environment
+###############################################################################
+set_load -pin_load 0.0334 [get_ports {alarm_short}]
+set_load -pin_load 0.0334 [get_ports {buzzer}]
+set_load -pin_load 0.0334 [get_ports {led_done}]
+set_load -pin_load 0.0334 [get_ports {bad_cnt[7]}]
+set_load -pin_load 0.0334 [get_ports {bad_cnt[6]}]
+set_load -pin_load 0.0334 [get_ports {bad_cnt[5]}]
+set_load -pin_load 0.0334 [get_ports {bad_cnt[4]}]
+set_load -pin_load 0.0334 [get_ports {bad_cnt[3]}]
+set_load -pin_load 0.0334 [get_ports {bad_cnt[2]}]
+set_load -pin_load 0.0334 [get_ports {bad_cnt[1]}]
+set_load -pin_load 0.0334 [get_ports {bad_cnt[0]}]
+set_load -pin_load 0.0334 [get_ports {good_cnt[7]}]
+set_load -pin_load 0.0334 [get_ports {good_cnt[6]}]
+set_load -pin_load 0.0334 [get_ports {good_cnt[5]}]
+set_load -pin_load 0.0334 [get_ports {good_cnt[4]}]
+set_load -pin_load 0.0334 [get_ports {good_cnt[3]}]
+set_load -pin_load 0.0334 [get_ports {good_cnt[2]}]
+set_load -pin_load 0.0334 [get_ports {good_cnt[1]}]
+set_load -pin_load 0.0334 [get_ports {good_cnt[0]}]
+set_load -pin_load 0.0334 [get_ports {led_progress[2]}]
+set_load -pin_load 0.0334 [get_ports {led_progress[1]}]
+set_load -pin_load 0.0334 [get_ports {led_progress[0]}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {clear_log}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {clk}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {rst_n}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {sensor_in}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {mode_sel[1]}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {mode_sel[0]}]
+###############################################################################
+# Design Rules
+###############################################################################
+set_max_transition 0.7500 [current_design]
+set_max_capacitance 0.2000 [current_design]
+set_max_fanout 10.0000 [current_design]

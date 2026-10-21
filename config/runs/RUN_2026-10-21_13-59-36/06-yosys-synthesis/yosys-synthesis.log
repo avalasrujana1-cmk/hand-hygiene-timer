@@ -1,0 +1,1472 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2024  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)
+Loaded SDC plugin
+
+1. Executing Liberty frontend: /home/codespace/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+Imported 428 cell types from liberty file.
+[INFO] Using SDC file '/workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-59-36/06-yosys-synthesis/synthesis.abc.sdc' for ABC…
+
+2. Executing Verilog-2005 frontend: /workspaces/hand-hygiene-timer/src/synchronizer.v
+Parsing SystemVerilog input from `/workspaces/hand-hygiene-timer/src/synchronizer.v' to AST representation.
+Storing AST representation for module `$abstract\synchronizer'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: /workspaces/hand-hygiene-timer/src/debounce.v
+Parsing SystemVerilog input from `/workspaces/hand-hygiene-timer/src/debounce.v' to AST representation.
+Storing AST representation for module `$abstract\debounce'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: /workspaces/hand-hygiene-timer/src/tick_gen.v
+Parsing SystemVerilog input from `/workspaces/hand-hygiene-timer/src/tick_gen.v' to AST representation.
+Storing AST representation for module `$abstract\tick_gen'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: /workspaces/hand-hygiene-timer/src/sat_counter.v
+Parsing SystemVerilog input from `/workspaces/hand-hygiene-timer/src/sat_counter.v' to AST representation.
+Storing AST representation for module `$abstract\sat_counter'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: /workspaces/hand-hygiene-timer/src/wash_fsm.v
+Parsing SystemVerilog input from `/workspaces/hand-hygiene-timer/src/wash_fsm.v' to AST representation.
+Storing AST representation for module `$abstract\wash_fsm'.
+Successfully finished Verilog frontend.
+
+7. Executing Verilog-2005 frontend: /workspaces/hand-hygiene-timer/src/top.v
+Parsing SystemVerilog input from `/workspaces/hand-hygiene-timer/src/top.v' to AST representation.
+Storing AST representation for module `$abstract\top'.
+Successfully finished Verilog frontend.
+
+8. Executing HIERARCHY pass (managing design hierarchy).
+
+9. Executing AST frontend in derive mode using pre-parsed AST for module `\top'.
+Generating RTLIL representation for module `\top'.
+
+9.1. Analyzing design hierarchy..
+Top module:  \top
+Parameter \W = 8
+
+9.2. Executing AST frontend in derive mode using pre-parsed AST for module `\sat_counter'.
+Parameter \W = 8
+Generating RTLIL representation for module `$paramod\sat_counter\W=s32'00000000000000000000000000001000'.
+Parameter \W = 8
+Found cached RTLIL representation for module `$paramod\sat_counter\W=s32'00000000000000000000000000001000'.
+
+9.3. Executing AST frontend in derive mode using pre-parsed AST for module `\wash_fsm'.
+Generating RTLIL representation for module `\wash_fsm'.
+Parameter \DIV = 32768
+Parameter \W = 15
+
+9.4. Executing AST frontend in derive mode using pre-parsed AST for module `\tick_gen'.
+Parameter \DIV = 32768
+Parameter \W = 15
+Generating RTLIL representation for module `$paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen'.
+Parameter \WIDTH = 11
+
+9.5. Executing AST frontend in derive mode using pre-parsed AST for module `\debounce'.
+Parameter \WIDTH = 11
+Generating RTLIL representation for module `$paramod\debounce\WIDTH=s32'00000000000000000000000000001011'.
+
+9.6. Executing AST frontend in derive mode using pre-parsed AST for module `\synchronizer'.
+Generating RTLIL representation for module `\synchronizer'.
+
+9.7. Analyzing design hierarchy..
+Top module:  \top
+Used module:     $paramod\sat_counter\W=s32'00000000000000000000000000001000
+Used module:     \wash_fsm
+Used module:     $paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen
+Used module:     $paramod\debounce\WIDTH=s32'00000000000000000000000000001011
+Used module:     \synchronizer
+
+9.8. Analyzing design hierarchy..
+Top module:  \top
+Used module:     $paramod\sat_counter\W=s32'00000000000000000000000000001000
+Used module:     \wash_fsm
+Used module:     $paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen
+Used module:     $paramod\debounce\WIDTH=s32'00000000000000000000000000001011
+Used module:     \synchronizer
+Removing unused module `$abstract\top'.
+Removing unused module `$abstract\wash_fsm'.
+Removing unused module `$abstract\sat_counter'.
+Removing unused module `$abstract\tick_gen'.
+Removing unused module `$abstract\debounce'.
+Removing unused module `$abstract\synchronizer'.
+Removed 6 unused modules.
+Renaming module top to top.
+
+10. Generating Graphviz representation of design.
+Writing dot description to `/workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-59-36/06-yosys-synthesis/hierarchy.dot'.
+Dumping module top to page 1.
+
+11. Executing TRIBUF pass.
+
+12. Executing HIERARCHY pass (managing design hierarchy).
+
+12.1. Analyzing design hierarchy..
+Top module:  \top
+Used module:     $paramod\sat_counter\W=s32'00000000000000000000000000001000
+Used module:     \wash_fsm
+Used module:     $paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen
+Used module:     $paramod\debounce\WIDTH=s32'00000000000000000000000000001011
+Used module:     \synchronizer
+
+12.2. Analyzing design hierarchy..
+Top module:  \top
+Used module:     $paramod\sat_counter\W=s32'00000000000000000000000000001000
+Used module:     \wash_fsm
+Used module:     $paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen
+Used module:     $paramod\debounce\WIDTH=s32'00000000000000000000000000001011
+Used module:     \synchronizer
+Removed 0 unused modules.
+
+13. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+14. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 2 switch rules as full_case in process $proc$/workspaces/hand-hygiene-timer/src/debounce.v:13$36 in module $paramod\debounce\WIDTH=s32'00000000000000000000000000001011.
+Marked 3 switch rules as full_case in process $proc$/workspaces/hand-hygiene-timer/src/tick_gen.v:15$32 in module $paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen.
+Marked 1 switch rules as full_case in process $proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:112$25 in module wash_fsm.
+Marked 7 switch rules as full_case in process $proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:42$7 in module wash_fsm.
+Marked 1 switch rules as full_case in process $proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:33$6 in module wash_fsm.
+Marked 2 switch rules as full_case in process $proc$/workspaces/hand-hygiene-timer/src/sat_counter.v:11$1 in module $paramod\sat_counter\W=s32'00000000000000000000000000001000.
+Marked 1 switch rules as full_case in process $proc$/workspaces/hand-hygiene-timer/src/synchronizer.v:10$41 in module synchronizer.
+Removed a total of 0 dead cases.
+
+15. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 7 redundant assignments.
+Promoted 4 assignments to connections.
+
+16. Executing PROC_INIT pass (extract init attributes).
+
+17. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `$paramod\debounce\WIDTH=s32'00000000000000000000000000001011.$proc$/workspaces/hand-hygiene-timer/src/debounce.v:13$36'.
+Found async reset \rst_n in `$paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen.$proc$/workspaces/hand-hygiene-timer/src/tick_gen.v:15$32'.
+Found async reset \rst_n in `\wash_fsm.$proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:42$7'.
+Found async reset \rst_n in `$paramod\sat_counter\W=s32'00000000000000000000000000001000.$proc$/workspaces/hand-hygiene-timer/src/sat_counter.v:11$1'.
+Found async reset \rst_n in `\synchronizer.$proc$/workspaces/hand-hygiene-timer/src/synchronizer.v:10$41'.
+
+18. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~19 debug messages>
+
+19. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `$paramod\debounce\WIDTH=s32'00000000000000000000000000001011.$proc$/workspaces/hand-hygiene-timer/src/debounce.v:13$36'.
+     1/2: $0\cnt[10:0]
+     2/2: $0\out[0:0]
+Creating decoders for process `$paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen.$proc$/workspaces/hand-hygiene-timer/src/tick_gen.v:15$32'.
+     1/2: $0\tick[0:0]
+     2/2: $0\cnt[14:0]
+Creating decoders for process `\wash_fsm.$proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:112$25'.
+     1/1: $1\led_progress[2:0]
+Creating decoders for process `\wash_fsm.$proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:42$7'.
+     1/6: $0\bad_inc[0:0]
+     2/6: $0\good_inc[0:0]
+     3/6: $0\aux[5:0]
+     4/6: $0\secs[5:0]
+     5/6: $0\mode_r[1:0]
+     6/6: $0\state[2:0]
+Creating decoders for process `\wash_fsm.$proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:33$6'.
+     1/3: $1\t2[5:0]
+     2/3: $1\t1[5:0]
+     3/3: $1\target[5:0]
+Creating decoders for process `$paramod\sat_counter\W=s32'00000000000000000000000000001000.$proc$/workspaces/hand-hygiene-timer/src/sat_counter.v:11$1'.
+     1/1: $0\count[7:0]
+Creating decoders for process `\synchronizer.$proc$/workspaces/hand-hygiene-timer/src/synchronizer.v:10$41'.
+     1/2: $0\ff2[0:0]
+     2/2: $0\ff1[0:0]
+
+20. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\wash_fsm.\led_progress' from process `\wash_fsm.$proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:112$25'.
+No latch inferred for signal `\wash_fsm.\target' from process `\wash_fsm.$proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:33$6'.
+No latch inferred for signal `\wash_fsm.\t1' from process `\wash_fsm.$proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:33$6'.
+No latch inferred for signal `\wash_fsm.\t2' from process `\wash_fsm.$proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:33$6'.
+
+21. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `$paramod\debounce\WIDTH=s32'00000000000000000000000000001011.\out' using process `$paramod\debounce\WIDTH=s32'00000000000000000000000000001011.$proc$/workspaces/hand-hygiene-timer/src/debounce.v:13$36'.
+  created $adff cell `$procdff$194' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\debounce\WIDTH=s32'00000000000000000000000000001011.\cnt' using process `$paramod\debounce\WIDTH=s32'00000000000000000000000000001011.$proc$/workspaces/hand-hygiene-timer/src/debounce.v:13$36'.
+  created $adff cell `$procdff$199' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen.\tick' using process `$paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen.$proc$/workspaces/hand-hygiene-timer/src/tick_gen.v:15$32'.
+  created $adff cell `$procdff$204' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen.\cnt' using process `$paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen.$proc$/workspaces/hand-hygiene-timer/src/tick_gen.v:15$32'.
+  created $adff cell `$procdff$209' with positive edge clock and positive level reset.
+Creating register for signal `\wash_fsm.\good_inc' using process `\wash_fsm.$proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:42$7'.
+  created $adff cell `$procdff$214' with positive edge clock and positive level reset.
+Creating register for signal `\wash_fsm.\bad_inc' using process `\wash_fsm.$proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:42$7'.
+  created $adff cell `$procdff$219' with positive edge clock and positive level reset.
+Creating register for signal `\wash_fsm.\state' using process `\wash_fsm.$proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:42$7'.
+  created $adff cell `$procdff$224' with positive edge clock and positive level reset.
+Creating register for signal `\wash_fsm.\mode_r' using process `\wash_fsm.$proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:42$7'.
+  created $adff cell `$procdff$229' with positive edge clock and positive level reset.
+Creating register for signal `\wash_fsm.\secs' using process `\wash_fsm.$proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:42$7'.
+  created $adff cell `$procdff$234' with positive edge clock and positive level reset.
+Creating register for signal `\wash_fsm.\aux' using process `\wash_fsm.$proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:42$7'.
+  created $adff cell `$procdff$239' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\sat_counter\W=s32'00000000000000000000000000001000.\count' using process `$paramod\sat_counter\W=s32'00000000000000000000000000001000.$proc$/workspaces/hand-hygiene-timer/src/sat_counter.v:11$1'.
+  created $adff cell `$procdff$244' with positive edge clock and positive level reset.
+Creating register for signal `\synchronizer.\ff1' using process `\synchronizer.$proc$/workspaces/hand-hygiene-timer/src/synchronizer.v:10$41'.
+  created $adff cell `$procdff$249' with positive edge clock and positive level reset.
+Creating register for signal `\synchronizer.\ff2' using process `\synchronizer.$proc$/workspaces/hand-hygiene-timer/src/synchronizer.v:10$41'.
+  created $adff cell `$procdff$254' with positive edge clock and positive level reset.
+
+22. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+23. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 2 empty switches in `$paramod\debounce\WIDTH=s32'00000000000000000000000000001011.$proc$/workspaces/hand-hygiene-timer/src/debounce.v:13$36'.
+Removing empty process `$paramod\debounce\WIDTH=s32'00000000000000000000000000001011.$proc$/workspaces/hand-hygiene-timer/src/debounce.v:13$36'.
+Found and cleaned up 2 empty switches in `$paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen.$proc$/workspaces/hand-hygiene-timer/src/tick_gen.v:15$32'.
+Removing empty process `$paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen.$proc$/workspaces/hand-hygiene-timer/src/tick_gen.v:15$32'.
+Found and cleaned up 1 empty switch in `\wash_fsm.$proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:112$25'.
+Removing empty process `wash_fsm.$proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:112$25'.
+Found and cleaned up 11 empty switches in `\wash_fsm.$proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:42$7'.
+Removing empty process `wash_fsm.$proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:42$7'.
+Found and cleaned up 1 empty switch in `\wash_fsm.$proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:33$6'.
+Removing empty process `wash_fsm.$proc$/workspaces/hand-hygiene-timer/src/wash_fsm.v:33$6'.
+Found and cleaned up 2 empty switches in `$paramod\sat_counter\W=s32'00000000000000000000000000001000.$proc$/workspaces/hand-hygiene-timer/src/sat_counter.v:11$1'.
+Removing empty process `$paramod\sat_counter\W=s32'00000000000000000000000000001000.$proc$/workspaces/hand-hygiene-timer/src/sat_counter.v:11$1'.
+Removing empty process `synchronizer.$proc$/workspaces/hand-hygiene-timer/src/synchronizer.v:10$41'.
+Cleaned up 19 empty switches.
+
+24. Executing CHECK pass (checking for obvious problems).
+Checking module top...
+Checking module $paramod\debounce\WIDTH=s32'00000000000000000000000000001011...
+Checking module $paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen...
+Checking module wash_fsm...
+Checking module $paramod\sat_counter\W=s32'00000000000000000000000000001000...
+Checking module synchronizer...
+Found and reported 0 problems.
+
+25. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+Optimizing module $paramod\debounce\WIDTH=s32'00000000000000000000000000001011.
+<suppressed ~4 debug messages>
+Optimizing module $paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen.
+<suppressed ~4 debug messages>
+Optimizing module wash_fsm.
+<suppressed ~23 debug messages>
+Optimizing module $paramod\sat_counter\W=s32'00000000000000000000000000001000.
+<suppressed ~2 debug messages>
+Optimizing module synchronizer.
+<suppressed ~4 debug messages>
+
+26. Executing FLATTEN pass (flatten design).
+Deleting now unused module $paramod\debounce\WIDTH=s32'00000000000000000000000000001011.
+Deleting now unused module $paramod$d30af83edbfbd4f3af2e56bc13a006c84277f9d9\tick_gen.
+Deleting now unused module wash_fsm.
+Deleting now unused module $paramod\sat_counter\W=s32'00000000000000000000000000001000.
+Deleting now unused module synchronizer.
+<suppressed ~6 debug messages>
+
+27. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+28. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+Removed 22 unused cells and 104 unused wires.
+<suppressed ~23 debug messages>
+
+29. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+30. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+<suppressed ~81 debug messages>
+Removed a total of 27 cells.
+
+31. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~16 debug messages>
+
+32. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+33. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+34. Executing OPT_DFF pass (perform DFF optimizations).
+
+35. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+Removed 0 unused cells and 25 unused wires.
+<suppressed ~1 debug messages>
+
+36. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+37. Rerunning OPT passes. (Maybe there is more to do…)
+
+38. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~16 debug messages>
+
+39. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+40. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+41. Executing OPT_DFF pass (perform DFF optimizations).
+
+42. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+
+43. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+44. Executing FSM pass (extract and optimize FSM).
+
+44.1. Executing FSM_DETECT pass (finding FSMs in design).
+Not marking top.u_fsm.state as FSM state register:
+    Circuit seems to be self-resetting.
+
+44.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+44.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+44.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+
+44.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+44.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+44.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+44.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+45. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+46. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+47. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~16 debug messages>
+
+48. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+49. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+50. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $flatten\u_good.$procdff$244 ($adff) from module top (D = $flatten\u_good.$0\count[7:0], Q = \u_good.count).
+Adding EN signal on $flatten\u_fsm.$procdff$239 ($adff) from module top (D = $flatten\u_fsm.$0\aux[5:0], Q = \u_fsm.aux).
+Adding EN signal on $flatten\u_fsm.$procdff$234 ($adff) from module top (D = $flatten\u_fsm.$0\secs[5:0], Q = \u_fsm.secs).
+Adding EN signal on $flatten\u_fsm.$procdff$229 ($adff) from module top (D = \mode_sel, Q = \u_fsm.mode_r).
+Adding EN signal on $flatten\u_fsm.$procdff$224 ($adff) from module top (D = $flatten\u_fsm.$0\state[2:0], Q = \u_fsm.state).
+Adding EN signal on $flatten\u_deb.$procdff$194 ($adff) from module top (D = \u_sync.ff2, Q = \u_deb.out).
+Adding EN signal on $flatten\u_bad.$procdff$244 ($adff) from module top (D = $flatten\u_bad.$0\count[7:0], Q = \u_bad.count).
+
+51. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+Removed 4 unused cells and 4 unused wires.
+<suppressed ~5 debug messages>
+
+52. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+<suppressed ~4 debug messages>
+
+53. Rerunning OPT passes. (Maybe there is more to do…)
+
+54. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~14 debug messages>
+
+55. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+    New input vector for $reduce_and cell $auto$opt_dff.cc:220:make_patterns_logic$314: { $auto$rtlil.cc:2493:Not$312 \u_deb.cnt }
+  Optimizing cells in module \top.
+Performed a total of 1 changes.
+
+56. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+<suppressed ~9 debug messages>
+Removed a total of 3 cells.
+
+57. Executing OPT_DFF pass (perform DFF optimizations).
+
+58. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+Removed 0 unused cells and 3 unused wires.
+<suppressed ~1 debug messages>
+
+59. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+60. Rerunning OPT passes. (Maybe there is more to do…)
+
+61. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~14 debug messages>
+
+62. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+63. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+64. Executing OPT_DFF pass (perform DFF optimizations).
+
+65. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+
+66. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+67. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 4) from port B of cell top.$auto$opt_dff.cc:195:make_patterns_logic$285 ($ne).
+Removed top 1 bits (of 3) from port B of cell top.$auto$opt_dff.cc:195:make_patterns_logic$270 ($ne).
+Removed top 1 bits (of 2) from port B of cell top.$auto$opt_dff.cc:195:make_patterns_logic$295 ($ne).
+Removed top 2 bits (of 6) from mux cell top.$flatten\u_fsm.$procmux$178 ($pmux).
+Removed top 1 bits (of 2) from port B of cell top.$flatten\u_fsm.$procmux$176_CMP0 ($eq).
+Removed top 1 bits (of 6) from mux cell top.$flatten\u_fsm.$procmux$174 ($pmux).
+Removed top 1 bits (of 4) from port B of cell top.$auto$opt_dff.cc:195:make_patterns_logic$299 ($ne).
+Removed top 2 bits (of 3) from port B of cell top.$flatten\u_fsm.$procmux$117_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell top.$flatten\u_fsm.$procmux$110_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell top.$auto$opt_dff.cc:195:make_patterns_logic$307 ($ne).
+Removed top 1 bits (of 6) from port B of cell top.$flatten\u_fsm.$ge$/workspaces/hand-hygiene-timer/src/wash_fsm.v:116$30 ($ge).
+Removed top 2 bits (of 6) from port B of cell top.$flatten\u_fsm.$ge$/workspaces/hand-hygiene-timer/src/wash_fsm.v:116$29 ($ge).
+Removed top 1 bits (of 3) from port B of cell top.$flatten\u_fsm.$eq$/workspaces/hand-hygiene-timer/src/wash_fsm.v:108$20 ($eq).
+Removed top 4 bits (of 6) from port B of cell top.$flatten\u_fsm.$ge$/workspaces/hand-hygiene-timer/src/wash_fsm.v:80$13 ($ge).
+Removed top 5 bits (of 6) from port B of cell top.$flatten\u_fsm.$add$/workspaces/hand-hygiene-timer/src/wash_fsm.v:80$12 ($add).
+Removed top 5 bits (of 6) from port B of cell top.$flatten\u_fsm.$add$/workspaces/hand-hygiene-timer/src/wash_fsm.v:72$11 ($add).
+
+68. Executing PEEPOPT pass (run peephole optimizers).
+
+69. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+
+70. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module top:
+  creating $macc model for $flatten\u_bad.$add$/workspaces/hand-hygiene-timer/src/sat_counter.v:17$5 ($add).
+  creating $macc model for $flatten\u_deb.$add$/workspaces/hand-hygiene-timer/src/debounce.v:20$39 ($add).
+  creating $macc model for $flatten\u_fsm.$add$/workspaces/hand-hygiene-timer/src/wash_fsm.v:72$11 ($add).
+  creating $macc model for $flatten\u_fsm.$add$/workspaces/hand-hygiene-timer/src/wash_fsm.v:80$12 ($add).
+  creating $macc model for $flatten\u_good.$add$/workspaces/hand-hygiene-timer/src/sat_counter.v:17$5 ($add).
+  creating $macc model for $flatten\u_tick.$add$/workspaces/hand-hygiene-timer/src/tick_gen.v:26$35 ($add).
+  creating $alu model for $macc $flatten\u_tick.$add$/workspaces/hand-hygiene-timer/src/tick_gen.v:26$35.
+  creating $alu model for $macc $flatten\u_good.$add$/workspaces/hand-hygiene-timer/src/sat_counter.v:17$5.
+  creating $alu model for $macc $flatten\u_fsm.$add$/workspaces/hand-hygiene-timer/src/wash_fsm.v:80$12.
+  creating $alu model for $macc $flatten\u_fsm.$add$/workspaces/hand-hygiene-timer/src/wash_fsm.v:72$11.
+  creating $alu model for $macc $flatten\u_deb.$add$/workspaces/hand-hygiene-timer/src/debounce.v:20$39.
+  creating $alu model for $macc $flatten\u_bad.$add$/workspaces/hand-hygiene-timer/src/sat_counter.v:17$5.
+  creating $alu model for $flatten\u_fsm.$ge$/workspaces/hand-hygiene-timer/src/wash_fsm.v:116$29 ($ge): new $alu
+  creating $alu model for $flatten\u_fsm.$ge$/workspaces/hand-hygiene-timer/src/wash_fsm.v:116$30 ($ge): new $alu
+  creating $alu model for $flatten\u_fsm.$ge$/workspaces/hand-hygiene-timer/src/wash_fsm.v:116$31 ($ge): new $alu
+  creating $alu model for $flatten\u_fsm.$ge$/workspaces/hand-hygiene-timer/src/wash_fsm.v:80$13 ($ge): new $alu
+  creating $alu cell for $flatten\u_fsm.$ge$/workspaces/hand-hygiene-timer/src/wash_fsm.v:80$13: $auto$alumacc.cc:485:replace_alu$322
+  creating $alu cell for $flatten\u_fsm.$ge$/workspaces/hand-hygiene-timer/src/wash_fsm.v:116$31: $auto$alumacc.cc:485:replace_alu$331
+  creating $alu cell for $flatten\u_fsm.$ge$/workspaces/hand-hygiene-timer/src/wash_fsm.v:116$30: $auto$alumacc.cc:485:replace_alu$340
+  creating $alu cell for $flatten\u_fsm.$ge$/workspaces/hand-hygiene-timer/src/wash_fsm.v:116$29: $auto$alumacc.cc:485:replace_alu$349
+  creating $alu cell for $flatten\u_bad.$add$/workspaces/hand-hygiene-timer/src/sat_counter.v:17$5: $auto$alumacc.cc:485:replace_alu$358
+  creating $alu cell for $flatten\u_deb.$add$/workspaces/hand-hygiene-timer/src/debounce.v:20$39: $auto$alumacc.cc:485:replace_alu$361
+  creating $alu cell for $flatten\u_fsm.$add$/workspaces/hand-hygiene-timer/src/wash_fsm.v:72$11: $auto$alumacc.cc:485:replace_alu$364
+  creating $alu cell for $flatten\u_fsm.$add$/workspaces/hand-hygiene-timer/src/wash_fsm.v:80$12: $auto$alumacc.cc:485:replace_alu$367
+  creating $alu cell for $flatten\u_good.$add$/workspaces/hand-hygiene-timer/src/sat_counter.v:17$5: $auto$alumacc.cc:485:replace_alu$370
+  creating $alu cell for $flatten\u_tick.$add$/workspaces/hand-hygiene-timer/src/tick_gen.v:26$35: $auto$alumacc.cc:485:replace_alu$373
+  created 10 $alu and 0 $macc cells.
+
+71. Executing SHARE pass (SAT-based resource sharing).
+
+72. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+73. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+74. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~14 debug messages>
+
+75. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+76. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+77. Executing OPT_DFF pass (perform DFF optimizations).
+
+78. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+Removed 0 unused cells and 4 unused wires.
+<suppressed ~1 debug messages>
+
+79. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+80. Rerunning OPT passes. (Maybe there is more to do…)
+
+81. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~14 debug messages>
+
+82. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+83. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+84. Executing OPT_DFF pass (perform DFF optimizations).
+
+85. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+
+86. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+87. Executing MEMORY pass.
+
+87.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+87.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+87.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+87.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+87.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+87.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+
+87.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+87.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+87.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+
+87.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+88. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+
+89. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+<suppressed ~27 debug messages>
+
+90. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+91. Executing OPT_DFF pass (perform DFF optimizations).
+
+92. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+Removed 0 unused cells and 21 unused wires.
+<suppressed ~1 debug messages>
+
+93. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+94. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+95. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+96. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~13 debug messages>
+
+97. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+    New ctrl vector for $pmux cell $flatten\u_fsm.$procmux$100: { $flatten\u_fsm.$procmux$110_CMP $flatten\u_fsm.$procmux$101_CTRL }
+    New ctrl vector for $pmux cell $flatten\u_fsm.$procmux$146: { \tick_clear $flatten\u_fsm.$procmux$117_CMP $flatten\u_fsm.$procmux$110_CMP $flatten\u_fsm.$procmux$101_CTRL }
+    Consolidated identical input bits for $mux cell $flatten\u_fsm.$procmux$160:
+      Old ports: A=3'100, B=3'001, Y=$flatten\u_fsm.$procmux$160_Y
+      New ports: A=2'10, B=2'01, Y={ $flatten\u_fsm.$procmux$160_Y [2] $flatten\u_fsm.$procmux$160_Y [0] }
+      New connections: $flatten\u_fsm.$procmux$160_Y [1] = 1'0
+    Consolidated identical input bits for $mux cell $flatten\u_fsm.$procmux$167:
+      Old ports: A=3'010, B=3'011, Y=$flatten\u_fsm.$procmux$167_Y
+      New ports: A=1'0, B=1'1, Y=$flatten\u_fsm.$procmux$167_Y [0]
+      New connections: $flatten\u_fsm.$procmux$167_Y [2:1] = 2'01
+    Consolidated identical input bits for $pmux cell $flatten\u_fsm.$procmux$182:
+      Old ports: A=6'010100, B=12'011110101000, Y=\u_fsm.target
+      New ports: A=4'0010, B=8'01111100, Y={ \u_fsm.target [5] \u_fsm.target [3:1] }
+      New connections: { \u_fsm.target [4] \u_fsm.target [0] } = { \u_fsm.target [2] 1'0 }
+  Optimizing cells in module \top.
+Performed a total of 5 changes.
+
+98. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+99. Executing OPT_SHARE pass.
+
+100. Executing OPT_DFF pass (perform DFF optimizations).
+
+101. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+
+102. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+<suppressed ~1 debug messages>
+
+103. Rerunning OPT passes. (Maybe there is more to do…)
+
+104. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~13 debug messages>
+
+105. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+106. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+107. Executing OPT_SHARE pass.
+
+108. Executing OPT_DFF pass (perform DFF optimizations).
+
+109. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+110. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+111. Rerunning OPT passes. (Maybe there is more to do…)
+
+112. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~13 debug messages>
+
+113. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+114. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+115. Executing OPT_SHARE pass.
+
+116. Executing OPT_DFF pass (perform DFF optimizations).
+
+117. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+
+118. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+119. Executing TECHMAP pass (map to technology primitives).
+
+119.1. Executing Verilog-2005 frontend: /nix/store/9r0bh7sp051dpm8km8bqlb028anpd3v3-yosys/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/nix/store/9r0bh7sp051dpm8km8bqlb028anpd3v3-yosys/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+119.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $adff.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $adffe.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $reduce_and.
+Using template $paramod$32efbfac1c4dc57230cf86180788fdfd12e3b511\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $reduce_or.
+Using template $paramod$bf2533632d512eac76dd186c0da49367e29b8e98\_90_pmux for cells of type $pmux.
+Using template $paramod$70d30c21ff772b34d0d1da2801fbd781dc3c70e4\_90_pmux for cells of type $pmux.
+Using template $paramod$9970e6a829a899c1fae39c88305c3c80d98a6bfd\_90_alu for cells of type $alu.
+Using template $paramod$d31bf4d7d72e59528d18fbd4f322e9d608532043\_90_pmux for cells of type $pmux.
+Using template $paramod$ed0bb9616228df1e6c226f91f8133e751815f1b1\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $and.
+Using template $paramod$e04283ca12514baf3d204c6994bec8f178dd89f8\_90_alu for cells of type $alu.
+Using template $paramod$5bb6c3f3e4a5303115f41a182fad517280ea0b25\_90_alu for cells of type $alu.
+Using template $paramod$c3cd1564c35d873179656addd6052d7ea8b6d991\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $logic_or.
+Using extmapper simplemap for cells of type $logic_not.
+Using template $paramod$00298f3f8094950cb9a5ff2fda48d0d8bde8806c\_90_alu for cells of type $alu.
+Using template $paramod$3b7577489eb4433b1d5620cab7f3794743dee5ea\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $logic_and.
+Using template $paramod$2f5fb04daf2da94d981bf9455fa4454c6ec8b705\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000110 for cells of type $lcu.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001000 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001111 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001011 for cells of type $lcu.
+Using extmapper simplemap for cells of type $or.
+No more expansions possible.
+<suppressed ~1213 debug messages>
+
+120. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+<suppressed ~550 debug messages>
+
+121. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+<suppressed ~363 debug messages>
+Removed a total of 121 cells.
+
+122. Executing OPT_DFF pass (perform DFF optimizations).
+
+123. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+Removed 63 unused cells and 631 unused wires.
+<suppressed ~64 debug messages>
+
+124. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+125. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+126. Executing OPT_DFF pass (perform DFF optimizations).
+
+127. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+
+128. Executing ABC pass (technology mapping using ABC).
+
+128.1. Extracting gate netlist of module `\top' to `<abc-temp-dir>/input.blif'..
+Extracted 473 gates and 540 wires to a netlist network with 65 inputs and 73 outputs.
+
+128.1.1. Executing ABC.
+Running ABC command: "/nix/store/6l3aj1gi4lja8z5s4lan2k2cfz9mqkrz-yosys-abc/bin/abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: Entered genlib library with 13 gates from file "<abc-temp-dir>/stdcells.genlib".
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+128.1.2. Re-integrating ABC results.
+ABC RESULTS:             ORNOT cells:       18
+ABC RESULTS:               NOT cells:       13
+ABC RESULTS:               NOR cells:       13
+ABC RESULTS:               XOR cells:       34
+ABC RESULTS:              XNOR cells:       28
+ABC RESULTS:               AND cells:       16
+ABC RESULTS:              NAND cells:       41
+ABC RESULTS:                OR cells:       69
+ABC RESULTS:            ANDNOT cells:      160
+ABC RESULTS:        internal signals:      402
+ABC RESULTS:           input signals:       65
+ABC RESULTS:          output signals:       73
+Removing temp directory.
+
+129. Executing OPT pass (performing simple optimizations).
+
+129.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+129.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+129.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+129.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+Removed 0 unused cells and 287 unused wires.
+<suppressed ~4 debug messages>
+
+129.5. Finished fast OPT passes.
+
+130. Executing HIERARCHY pass (managing design hierarchy).
+
+130.1. Analyzing design hierarchy..
+Top module:  \top
+
+130.2. Analyzing design hierarchy..
+Top module:  \top
+Removed 0 unused modules.
+
+131. Executing CHECK pass (checking for obvious problems).
+Checking module top...
+Found and reported 0 problems.
+
+132. Printing statistics.
+
+=== top ===
+
+   Number of wires:                437
+   Number of wire bits:            530
+   Number of public wires:          59
+   Number of public wire bits:     145
+   Number of ports:                 11
+   Number of port bits:             28
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                462
+     $_ANDNOT_                     159
+     $_AND_                         16
+     $_DFFE_PN0P_                   34
+     $_DFF_PN0_                     31
+     $_NAND_                        41
+     $_NOR_                         13
+     $_NOT_                         13
+     $_ORNOT_                       18
+     $_OR_                          69
+     $_XNOR_                        28
+     $_XOR_                         34
+     $scopeinfo                      6
+
+133. Generating Graphviz representation of design.
+Writing dot description to `/workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-59-36/06-yosys-synthesis/primitive_techmap.dot'.
+Dumping module top to page 1.
+
+134. Executing OPT pass (performing simple optimizations).
+
+134.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+134.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+134.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+134.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \top.
+Performed a total of 0 changes.
+
+134.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\top'.
+Removed a total of 0 cells.
+
+134.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+134.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+
+134.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module top.
+
+134.9. Finished OPT passes. (There is nothing left to do.)
+
+135. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+Removed 6 unused cells and 36 unused wires.
+<suppressed ~42 debug messages>
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-59-36/tmp/3fec691928cf4a7c92d282e379025502.lib ",
+   "modules": {
+      "\\top": {
+         "num_wires":         401,
+         "num_wire_bits":     462,
+         "num_pub_wires":     23,
+         "num_pub_wire_bits": 77,
+         "num_ports":         11,
+         "num_port_bits":     28,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         456,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 159,
+            "$_AND_": 16,
+            "$_DFFE_PN0P_": 34,
+            "$_DFF_PN0_": 31,
+            "$_NAND_": 41,
+            "$_NOR_": 13,
+            "$_NOT_": 13,
+            "$_ORNOT_": 18,
+            "$_OR_": 69,
+            "$_XNOR_": 28,
+            "$_XOR_": 34
+         }
+      }
+   },
+      "design": {
+         "num_wires":         401,
+         "num_wire_bits":     462,
+         "num_pub_wires":     23,
+         "num_pub_wire_bits": 77,
+         "num_ports":         11,
+         "num_port_bits":     28,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         456,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 159,
+            "$_AND_": 16,
+            "$_DFFE_PN0P_": 34,
+            "$_DFF_PN0_": 31,
+            "$_NAND_": 41,
+            "$_NOR_": 13,
+            "$_NOT_": 13,
+            "$_ORNOT_": 18,
+            "$_OR_": 69,
+            "$_XNOR_": 28,
+            "$_XOR_": 34
+         }
+      }
+}
+
+136. Printing statistics.
+
+=== top ===
+
+   Number of wires:                401
+   Number of wire bits:            462
+   Number of public wires:          23
+   Number of public wire bits:      77
+   Number of ports:                 11
+   Number of port bits:             28
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                456
+     $_ANDNOT_                     159
+     $_AND_                         16
+     $_DFFE_PN0P_                   34
+     $_DFF_PN0_                     31
+     $_NAND_                        41
+     $_NOR_                         13
+     $_NOT_                         13
+     $_ORNOT_                       18
+     $_OR_                          69
+     $_XNOR_                        28
+     $_XOR_                         34
+
+   Area for cell type $_NOT_ is unknown!
+   Area for cell type $_AND_ is unknown!
+   Area for cell type $_NAND_ is unknown!
+   Area for cell type $_OR_ is unknown!
+   Area for cell type $_NOR_ is unknown!
+   Area for cell type $_XOR_ is unknown!
+   Area for cell type $_XNOR_ is unknown!
+   Area for cell type $_ANDNOT_ is unknown!
+   Area for cell type $_ORNOT_ is unknown!
+   Area for cell type $_DFF_PN0_ is unknown!
+   Area for cell type $_DFFE_PN0P_ is unknown!
+
+[INFO] Applying tri-state buffer mapping from '/home/codespace/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v'…
+
+137. Executing TECHMAP pass (map to technology primitives).
+
+137.1. Executing Verilog-2005 frontend: /home/codespace/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v
+Parsing Verilog input from `/home/codespace/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v' to AST representation.
+Generating RTLIL representation for module `\$_TBUF_'.
+Successfully finished Verilog frontend.
+
+137.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~3 debug messages>
+
+138. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+[INFO] Applying latch mapping from '/home/codespace/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v'…
+
+139. Executing TECHMAP pass (map to technology primitives).
+
+139.1. Executing Verilog-2005 frontend: /home/codespace/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v
+Parsing Verilog input from `/home/codespace/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DLATCH_P_'.
+Generating RTLIL representation for module `\$_DLATCH_N_'.
+Successfully finished Verilog frontend.
+
+139.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~4 debug messages>
+
+140. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+
+141. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell sky130_fd_sc_hd__dfxtp_2 (noninv, pins=3, area=21.27) is a direct match for cell type $_DFF_P_.
+  cell sky130_fd_sc_hd__dfrtp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN0_.
+  cell sky130_fd_sc_hd__dfstp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN1_.
+  cell sky130_fd_sc_hd__dfbbn_2 (noninv, pins=6, area=35.03) is a direct match for cell type $_DFFSR_NNN_.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    \sky130_fd_sc_hd__dfxtp_2 _DFF_P_ (.CLK( C), .D( D), .Q( Q));
+    unmapped dff cell: $_DFF_NN0_
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \sky130_fd_sc_hd__dfrtp_2 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
+    \sky130_fd_sc_hd__dfstp_2 _DFF_PN1_ (.CLK( C), .D( D), .Q( Q), .SET_B( R));
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    \sky130_fd_sc_hd__dfbbn_2 _DFFSR_NNN_ (.CLK_N( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    unmapped dff cell: $_DFFSR_PNN_
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+141.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+Mapping DFF cells in module `\top':
+  mapped 65 $_DFF_PN0_ cells to \sky130_fd_sc_hd__dfrtp_2 cells.
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-59-36/tmp/3fec691928cf4a7c92d282e379025502.lib ",
+   "modules": {
+      "\\top": {
+         "num_wires":         435,
+         "num_wire_bits":     496,
+         "num_pub_wires":     23,
+         "num_pub_wire_bits": 77,
+         "num_ports":         11,
+         "num_port_bits":     28,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         490,
+         "area":              1707.888000,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 159,
+            "$_AND_": 16,
+            "$_MUX_": 34,
+            "$_NAND_": 41,
+            "$_NOR_": 13,
+            "$_NOT_": 13,
+            "$_ORNOT_": 18,
+            "$_OR_": 69,
+            "$_XNOR_": 28,
+            "$_XOR_": 34,
+            "sky130_fd_sc_hd__dfrtp_2": 65
+         }
+      }
+   },
+      "design": {
+         "num_wires":         435,
+         "num_wire_bits":     496,
+         "num_pub_wires":     23,
+         "num_pub_wire_bits": 77,
+         "num_ports":         11,
+         "num_port_bits":     28,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         490,
+         "area":              1707.888000,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 159,
+            "$_AND_": 16,
+            "$_MUX_": 34,
+            "$_NAND_": 41,
+            "$_NOR_": 13,
+            "$_NOT_": 13,
+            "$_ORNOT_": 18,
+            "$_OR_": 69,
+            "$_XNOR_": 28,
+            "$_XOR_": 34,
+            "sky130_fd_sc_hd__dfrtp_2": 65
+         }
+      }
+}
+
+142. Printing statistics.
+
+=== top ===
+
+   Number of wires:                435
+   Number of wire bits:            496
+   Number of public wires:          23
+   Number of public wire bits:      77
+   Number of ports:                 11
+   Number of port bits:             28
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                490
+     $_ANDNOT_                     159
+     $_AND_                         16
+     $_MUX_                         34
+     $_NAND_                        41
+     $_NOR_                         13
+     $_NOT_                         13
+     $_ORNOT_                       18
+     $_OR_                          69
+     $_XNOR_                        28
+     $_XOR_                         34
+     sky130_fd_sc_hd__dfrtp_2       65
+
+   Area for cell type $_NOT_ is unknown!
+   Area for cell type $_AND_ is unknown!
+   Area for cell type $_NAND_ is unknown!
+   Area for cell type $_OR_ is unknown!
+   Area for cell type $_NOR_ is unknown!
+   Area for cell type $_XOR_ is unknown!
+   Area for cell type $_XNOR_ is unknown!
+   Area for cell type $_ANDNOT_ is unknown!
+   Area for cell type $_ORNOT_ is unknown!
+   Area for cell type $_MUX_ is unknown!
+
+   Chip area for module '\top': 1707.888000
+     of which used for sequential elements: 1707.888000 (100.00%)
+
+[INFO] Using generated ABC script '/workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-59-36/06-yosys-synthesis/AREA_0.abc'…
+
+143. Executing ABC pass (technology mapping using ABC).
+
+143.1. Extracting gate netlist of module `\top' to `/tmp/yosys-abc-vKmnc9/input.blif'..
+Extracted 425 gates and 492 wires to a netlist network with 67 inputs and 69 outputs.
+
+143.1.1. Executing ABC.
+Running ABC command: "/nix/store/6l3aj1gi4lja8z5s4lan2k2cfz9mqkrz-yosys-abc/bin/abc" -s -f /tmp/yosys-abc-vKmnc9/abc.script 2>&1
+ABC: ABC command line: "source /tmp/yosys-abc-vKmnc9/abc.script".
+ABC: 
+ABC: + read_blif /tmp/yosys-abc-vKmnc9/input.blif 
+ABC: + read_lib -w /workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-59-36/tmp/3fec691928cf4a7c92d282e379025502.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.09 sec
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfsbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_8".
+ABC: Library "sky130_fd_sc_hd__tt_025C_1v80" from "/workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-59-36/tmp/3fec691928cf4a7c92d282e379025502.lib" has 175 cells (17 skipped: 14 seq; 3 tri-state; 0 no func; 0 dont_use).  Time =     0.14 sec
+ABC: Memory =    9.54 MB. Time =     0.14 sec
+ABC: Warning: Detected 2 multi-output gates (for example, "sky130_fd_sc_hd__fa_1").
+ABC: + read_constr -v /workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-59-36/06-yosys-synthesis/synthesis.abc.sdc 
+ABC: Setting driving cell to be "sky130_fd_sc_hd__inv_2/Y".
+ABC: Setting output load to be 33.442001.
+ABC: + source /workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-59-36/06-yosys-synthesis/AREA_0.abc 
+ABC: Error: The network is combinational.
+ABC: Cannot find the default PI driving cell (sky130_fd_sc_hd__inv_2/Y) in the library.
+ABC: WireLoad = "none"  Gates =    209 (  5.7 %)   Cap = 14.4 ff (  2.3 %)   Area =     1770.45 ( 88.5 %)   Delay =  1972.30 ps  (  7.2 %)               
+ABC: Path  0 --       1 : 0    7 pi                        A =   0.00  Df =   0.0   -0.0 ps  S =   0.0 ps  Cin =  0.0 ff  Cout =  17.4 ff  Cmax =   0.0 ff  G =    0  
+ABC: Path  1 --     141 : 3    2 sky130_fd_sc_hd__and3b_2  A =  10.01  Df = 331.7  -61.1 ps  S = 193.7 ps  Cin =  1.5 ff  Cout =  36.0 ff  Cmax = 309.5 ff  G = 2426  
+ABC: Path  2 --     145 : 3    4 sky130_fd_sc_hd__a21o_2   A =   8.76  Df = 585.8  -14.5 ps  S = 215.0 ps  Cin =  2.4 ff  Cout =  42.2 ff  Cmax = 309.5 ff  G = 1775  
+ABC: Path  3 --     256 : 2    3 sky130_fd_sc_hd__nor2_2   A =   6.26  Df = 735.5  -65.4 ps  S = 120.1 ps  Cin =  4.4 ff  Cout =   8.5 ff  Cmax = 141.9 ff  G =  182  
+ABC: Path  4 --     320 : 4    1 sky130_fd_sc_hd__a2bb2o_2 A =  11.26  Df =1112.3 -111.6 ps  S =  39.4 ps  Cin =  1.7 ff  Cout =   1.5 ff  Cmax = 300.3 ff  G =   85  
+ABC: Path  5 --     321 : 3    3 sky130_fd_sc_hd__or3b_2   A =   8.76  Df =1497.6 -141.2 ps  S = 104.0 ps  Cin =  1.5 ff  Cout =  10.6 ff  Cmax = 269.2 ff  G =  676  
+ABC: Path  6 --     324 : 3    1 sky130_fd_sc_hd__mux2_1   A =  11.26  Df =1972.3 -224.7 ps  S = 300.3 ps  Cin =  2.3 ff  Cout =  33.4 ff  Cmax = 173.0 ff  G = 1465  
+ABC: Start-point = pi0 (\u_fsm.state [1]).  End-point = po57 ($auto$rtlil.cc:2739:MuxGate$2642).
+ABC: netlist                       : i/o =   67/   69  lat =    0  nd =   209  edge =    601  area =1770.74  delay = 6.00  lev = 6
+ABC: + write_blif /tmp/yosys-abc-vKmnc9/output.blif 
+
+143.1.2. Re-integrating ABC results.
+ABC RESULTS:   sky130_fd_sc_hd__xor2_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__nand4_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__nand2b_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__xnor2_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o31a_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__or4_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__and4bb_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a221o_2 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__o21ai_2 cells:       11
+ABC RESULTS:   sky130_fd_sc_hd__a211o_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o2bb2a_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__nand3_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__and4_2 cells:        8
+ABC RESULTS:   sky130_fd_sc_hd__inv_2 cells:       12
+ABC RESULTS:   sky130_fd_sc_hd__and3b_2 cells:        8
+ABC RESULTS:   sky130_fd_sc_hd__a31o_2 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__or2_2 cells:       13
+ABC RESULTS:   sky130_fd_sc_hd__a2bb2o_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__or3b_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a21o_2 cells:       10
+ABC RESULTS:   sky130_fd_sc_hd__or3_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__nand2_2 cells:        9
+ABC RESULTS:   sky130_fd_sc_hd__o221a_2 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__nor2_2 cells:       22
+ABC RESULTS:   sky130_fd_sc_hd__nor3b_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__mux2_1 cells:       11
+ABC RESULTS:   sky130_fd_sc_hd__a21oi_2 cells:       16
+ABC RESULTS:   sky130_fd_sc_hd__and3_2 cells:       14
+ABC RESULTS:   sky130_fd_sc_hd__nor3_2 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__a31oi_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o21a_2 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__and2b_2 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__a32o_2 cells:       14
+ABC RESULTS:   sky130_fd_sc_hd__a41o_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__and2_2 cells:       15
+ABC RESULTS:        internal signals:      356
+ABC RESULTS:           input signals:       67
+ABC RESULTS:          output signals:       69
+Removing temp directory.
+
+144. Executing SETUNDEF pass (replace undef values with defined constants).
+
+145. Executing HILOMAP pass (mapping to constant drivers).
+
+146. Executing SPLITNETS pass (splitting up multi-bit signals).
+
+147. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \top..
+Removed 0 unused cells and 492 unused wires.
+<suppressed ~1 debug messages>
+
+148. Executing INSBUF pass (insert buffer cells for connected wires).
+
+149. Executing CHECK pass (checking for obvious problems).
+Checking module top...
+Found and reported 0 problems.
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-59-36/tmp/3fec691928cf4a7c92d282e379025502.lib ",
+   "modules": {
+      "\\top": {
+         "num_wires":         263,
+         "num_wire_bits":     280,
+         "num_pub_wires":     60,
+         "num_pub_wire_bits": 77,
+         "num_ports":         11,
+         "num_port_bits":     28,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         274,
+         "area":              3478.336000,
+         "num_cells_by_type": {
+            "sky130_fd_sc_hd__a211o_2": 1,
+            "sky130_fd_sc_hd__a21o_2": 10,
+            "sky130_fd_sc_hd__a21oi_2": 16,
+            "sky130_fd_sc_hd__a221o_2": 3,
+            "sky130_fd_sc_hd__a2bb2o_2": 1,
+            "sky130_fd_sc_hd__a31o_2": 6,
+            "sky130_fd_sc_hd__a31oi_2": 1,
+            "sky130_fd_sc_hd__a32o_2": 14,
+            "sky130_fd_sc_hd__a41o_2": 1,
+            "sky130_fd_sc_hd__and2_2": 15,
+            "sky130_fd_sc_hd__and2b_2": 5,
+            "sky130_fd_sc_hd__and3_2": 14,
+            "sky130_fd_sc_hd__and3b_2": 8,
+            "sky130_fd_sc_hd__and4_2": 8,
+            "sky130_fd_sc_hd__and4bb_2": 1,
+            "sky130_fd_sc_hd__dfrtp_2": 65,
+            "sky130_fd_sc_hd__inv_2": 12,
+            "sky130_fd_sc_hd__mux2_1": 11,
+            "sky130_fd_sc_hd__nand2_2": 9,
+            "sky130_fd_sc_hd__nand2b_2": 1,
+            "sky130_fd_sc_hd__nand3_2": 2,
+            "sky130_fd_sc_hd__nand4_2": 1,
+            "sky130_fd_sc_hd__nor2_2": 22,
+            "sky130_fd_sc_hd__nor3_2": 5,
+            "sky130_fd_sc_hd__nor3b_2": 1,
+            "sky130_fd_sc_hd__o21a_2": 5,
+            "sky130_fd_sc_hd__o21ai_2": 11,
+            "sky130_fd_sc_hd__o221a_2": 3,
+            "sky130_fd_sc_hd__o2bb2a_2": 1,
+            "sky130_fd_sc_hd__o31a_2": 2,
+            "sky130_fd_sc_hd__or2_2": 13,
+            "sky130_fd_sc_hd__or3_2": 1,
+            "sky130_fd_sc_hd__or3b_2": 2,
+            "sky130_fd_sc_hd__or4_2": 1,
+            "sky130_fd_sc_hd__xnor2_2": 1,
+            "sky130_fd_sc_hd__xor2_2": 1
+         }
+      }
+   },
+      "design": {
+         "num_wires":         263,
+         "num_wire_bits":     280,
+         "num_pub_wires":     60,
+         "num_pub_wire_bits": 77,
+         "num_ports":         11,
+         "num_port_bits":     28,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         274,
+         "area":              3478.336000,
+         "num_cells_by_type": {
+            "sky130_fd_sc_hd__a211o_2": 1,
+            "sky130_fd_sc_hd__a21o_2": 10,
+            "sky130_fd_sc_hd__a21oi_2": 16,
+            "sky130_fd_sc_hd__a221o_2": 3,
+            "sky130_fd_sc_hd__a2bb2o_2": 1,
+            "sky130_fd_sc_hd__a31o_2": 6,
+            "sky130_fd_sc_hd__a31oi_2": 1,
+            "sky130_fd_sc_hd__a32o_2": 14,
+            "sky130_fd_sc_hd__a41o_2": 1,
+            "sky130_fd_sc_hd__and2_2": 15,
+            "sky130_fd_sc_hd__and2b_2": 5,
+            "sky130_fd_sc_hd__and3_2": 14,
+            "sky130_fd_sc_hd__and3b_2": 8,
+            "sky130_fd_sc_hd__and4_2": 8,
+            "sky130_fd_sc_hd__and4bb_2": 1,
+            "sky130_fd_sc_hd__dfrtp_2": 65,
+            "sky130_fd_sc_hd__inv_2": 12,
+            "sky130_fd_sc_hd__mux2_1": 11,
+            "sky130_fd_sc_hd__nand2_2": 9,
+            "sky130_fd_sc_hd__nand2b_2": 1,
+            "sky130_fd_sc_hd__nand3_2": 2,
+            "sky130_fd_sc_hd__nand4_2": 1,
+            "sky130_fd_sc_hd__nor2_2": 22,
+            "sky130_fd_sc_hd__nor3_2": 5,
+            "sky130_fd_sc_hd__nor3b_2": 1,
+            "sky130_fd_sc_hd__o21a_2": 5,
+            "sky130_fd_sc_hd__o21ai_2": 11,
+            "sky130_fd_sc_hd__o221a_2": 3,
+            "sky130_fd_sc_hd__o2bb2a_2": 1,
+            "sky130_fd_sc_hd__o31a_2": 2,
+            "sky130_fd_sc_hd__or2_2": 13,
+            "sky130_fd_sc_hd__or3_2": 1,
+            "sky130_fd_sc_hd__or3b_2": 2,
+            "sky130_fd_sc_hd__or4_2": 1,
+            "sky130_fd_sc_hd__xnor2_2": 1,
+            "sky130_fd_sc_hd__xor2_2": 1
+         }
+      }
+}
+
+150. Printing statistics.
+
+=== top ===
+
+   Number of wires:                263
+   Number of wire bits:            280
+   Number of public wires:          60
+   Number of public wire bits:      77
+   Number of ports:                 11
+   Number of port bits:             28
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                274
+     sky130_fd_sc_hd__a211o_2        1
+     sky130_fd_sc_hd__a21o_2        10
+     sky130_fd_sc_hd__a21oi_2       16
+     sky130_fd_sc_hd__a221o_2        3
+     sky130_fd_sc_hd__a2bb2o_2       1
+     sky130_fd_sc_hd__a31o_2         6
+     sky130_fd_sc_hd__a31oi_2        1
+     sky130_fd_sc_hd__a32o_2        14
+     sky130_fd_sc_hd__a41o_2         1
+     sky130_fd_sc_hd__and2_2        15
+     sky130_fd_sc_hd__and2b_2        5
+     sky130_fd_sc_hd__and3_2        14
+     sky130_fd_sc_hd__and3b_2        8
+     sky130_fd_sc_hd__and4_2         8
+     sky130_fd_sc_hd__and4bb_2       1
+     sky130_fd_sc_hd__dfrtp_2       65
+     sky130_fd_sc_hd__inv_2         12
+     sky130_fd_sc_hd__mux2_1        11
+     sky130_fd_sc_hd__nand2_2        9
+     sky130_fd_sc_hd__nand2b_2       1
+     sky130_fd_sc_hd__nand3_2        2
+     sky130_fd_sc_hd__nand4_2        1
+     sky130_fd_sc_hd__nor2_2        22
+     sky130_fd_sc_hd__nor3_2         5
+     sky130_fd_sc_hd__nor3b_2        1
+     sky130_fd_sc_hd__o21a_2         5
+     sky130_fd_sc_hd__o21ai_2       11
+     sky130_fd_sc_hd__o221a_2        3
+     sky130_fd_sc_hd__o2bb2a_2       1
+     sky130_fd_sc_hd__o31a_2         2
+     sky130_fd_sc_hd__or2_2         13
+     sky130_fd_sc_hd__or3_2          1
+     sky130_fd_sc_hd__or3b_2         2
+     sky130_fd_sc_hd__or4_2          1
+     sky130_fd_sc_hd__xnor2_2        1
+     sky130_fd_sc_hd__xor2_2         1
+
+   Chip area for module '\top': 3478.336000
+     of which used for sequential elements: 1707.888000 (49.10%)
+
+151. Executing Verilog backend.
+Dumping module `\top'.
+
+152. Executing JSON backend.

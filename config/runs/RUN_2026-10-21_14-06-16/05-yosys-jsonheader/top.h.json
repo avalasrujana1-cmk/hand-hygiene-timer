@@ -1,0 +1,3588 @@
+{
+  "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+  "modules": {
+    "top": {
+      "attributes": {
+        "hdlname": "top",
+        "top": "00000000000000000000000000000001",
+        "src": "/workspaces/hand-hygiene-timer/src/top.v:2.1-77.10"
+      },
+      "parameter_default_values": {
+        "DEB_W": "00000000000000000000000000001011",
+        "TICK_DIV": "00000000000000001000000000000000",
+        "TICK_W": "00000000000000000000000000001111"
+      },
+      "ports": {
+        "clk": {
+          "direction": "input",
+          "bits": [ 2 ]
+        },
+        "rst_n": {
+          "direction": "input",
+          "bits": [ 3 ]
+        },
+        "sensor_in": {
+          "direction": "input",
+          "bits": [ 4 ]
+        },
+        "mode_sel": {
+          "direction": "input",
+          "bits": [ 5, 6 ]
+        },
+        "clear_log": {
+          "direction": "input",
+          "bits": [ 7 ]
+        },
+        "led_progress": {
+          "direction": "output",
+          "bits": [ 8, 9, 10 ]
+        },
+        "led_done": {
+          "direction": "output",
+          "bits": [ 11 ]
+        },
+        "buzzer": {
+          "direction": "output",
+          "bits": [ 12 ]
+        },
+        "alarm_short": {
+          "direction": "output",
+          "bits": [ 13 ]
+        },
+        "good_cnt": {
+          "direction": "output",
+          "bits": [ 14, 15, 16, 17, 18, 19, 20, 21 ]
+        },
+        "bad_cnt": {
+          "direction": "output",
+          "bits": [ 22, 23, 24, 25, 26, 27, 28, 29 ]
+        }
+      },
+      "cells": {
+        "$flatten\\u_bad.$add$/workspaces/hand-hygiene-timer/src/sat_counter.v:17$5": {
+          "hide_name": 1,
+          "type": "$add",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000001000",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000001000"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/sat_counter.v:17.22-17.34"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 22, 23, 24, 25, 26, 27, 28, 29 ],
+            "B": [ "1" ],
+            "Y": [ 30, 31, 32, 33, 34, 35, 36, 37 ]
+          }
+        },
+        "$flatten\\u_bad.$logic_and$/workspaces/hand-hygiene-timer/src/sat_counter.v:16$4": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/sat_counter.v:16.18-16.45"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 38 ],
+            "B": [ 39 ],
+            "Y": [ 40 ]
+          }
+        },
+        "$flatten\\u_bad.$ne$/workspaces/hand-hygiene-timer/src/sat_counter.v:16$3": {
+          "hide_name": 1,
+          "type": "$ne",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000001000",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000001000",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/sat_counter.v:16.26-16.44"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 22, 23, 24, 25, 26, 27, 28, 29 ],
+            "B": [ "1", "1", "1", "1", "1", "1", "1", "1" ],
+            "Y": [ 39 ]
+          }
+        },
+        "$flatten\\u_bad.$procdff$244": {
+          "hide_name": 1,
+          "type": "$adff",
+          "parameters": {
+            "ARST_POLARITY": "00000000000000000000000000000000",
+            "ARST_VALUE": "00000000",
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000001000"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/sat_counter.v:11.5-18.8"
+          },
+          "port_directions": {
+            "ARST": "input",
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "ARST": [ 3 ],
+            "CLK": [ 2 ],
+            "D": [ 41, 42, 43, 44, 45, 46, 47, 48 ],
+            "Q": [ 22, 23, 24, 25, 26, 27, 28, 29 ]
+          }
+        },
+        "$flatten\\u_bad.$procmux$185": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000001000"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/sat_counter.v:16.18-16.45|/workspaces/hand-hygiene-timer/src/sat_counter.v:16.14-17.35"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 22, 23, 24, 25, 26, 27, 28, 29 ],
+            "B": [ 30, 31, 32, 33, 34, 35, 36, 37 ],
+            "S": [ 40 ],
+            "Y": [ 49, 50, 51, 52, 53, 54, 55, 56 ]
+          }
+        },
+        "$flatten\\u_bad.$procmux$188": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000001000"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/sat_counter.v:14.18-14.23|/workspaces/hand-hygiene-timer/src/sat_counter.v:14.14-17.35"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 49, 50, 51, 52, 53, 54, 55, 56 ],
+            "B": [ "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "S": [ 7 ],
+            "Y": [ 41, 42, 43, 44, 45, 46, 47, 48 ]
+          }
+        },
+        "$flatten\\u_deb.$add$/workspaces/hand-hygiene-timer/src/debounce.v:20$39": {
+          "hide_name": 1,
+          "type": "$add",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000001011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000001011"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/debounce.v:20.20-20.30"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67 ],
+            "B": [ "1" ],
+            "Y": [ 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78 ]
+          }
+        },
+        "$flatten\\u_deb.$eq$/workspaces/hand-hygiene-timer/src/debounce.v:17$38": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/debounce.v:17.22-17.31"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 79 ],
+            "B": [ 80 ],
+            "Y": [ 81 ]
+          }
+        },
+        "$flatten\\u_deb.$procdff$194": {
+          "hide_name": 1,
+          "type": "$adff",
+          "parameters": {
+            "ARST_POLARITY": "00000000000000000000000000000000",
+            "ARST_VALUE": "0",
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/debounce.v:13.5-26.8"
+          },
+          "port_directions": {
+            "ARST": "input",
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "ARST": [ 3 ],
+            "CLK": [ 2 ],
+            "D": [ 82 ],
+            "Q": [ 80 ]
+          }
+        },
+        "$flatten\\u_deb.$procdff$199": {
+          "hide_name": 1,
+          "type": "$adff",
+          "parameters": {
+            "ARST_POLARITY": "00000000000000000000000000000000",
+            "ARST_VALUE": "00000000000",
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000001011"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/debounce.v:13.5-26.8"
+          },
+          "port_directions": {
+            "ARST": "input",
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "ARST": [ 3 ],
+            "CLK": [ 2 ],
+            "D": [ 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93 ],
+            "Q": [ 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67 ]
+          }
+        },
+        "$flatten\\u_deb.$procmux$43": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000001011"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/debounce.v:21.17-21.21|/workspaces/hand-hygiene-timer/src/debounce.v:21.13-24.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78 ],
+            "B": [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "S": [ 94 ],
+            "Y": [ 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105 ]
+          }
+        },
+        "$flatten\\u_deb.$procmux$46": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000001011"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/debounce.v:17.22-17.31|/workspaces/hand-hygiene-timer/src/debounce.v:17.18-25.12"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105 ],
+            "B": [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "S": [ 81 ],
+            "Y": [ 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93 ]
+          }
+        },
+        "$flatten\\u_deb.$procmux$48": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/debounce.v:21.17-21.21|/workspaces/hand-hygiene-timer/src/debounce.v:21.13-24.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 80 ],
+            "B": [ 79 ],
+            "S": [ 94 ],
+            "Y": [ 106 ]
+          }
+        },
+        "$flatten\\u_deb.$procmux$51": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/debounce.v:17.22-17.31|/workspaces/hand-hygiene-timer/src/debounce.v:17.18-25.12"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 106 ],
+            "B": [ 80 ],
+            "S": [ 81 ],
+            "Y": [ 82 ]
+          }
+        },
+        "$flatten\\u_deb.$reduce_and$/workspaces/hand-hygiene-timer/src/debounce.v:21$40": {
+          "hide_name": 1,
+          "type": "$reduce_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000001011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/debounce.v:21.17-21.21"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67 ],
+            "Y": [ 94 ]
+          }
+        },
+        "$flatten\\u_fsm.$add$/workspaces/hand-hygiene-timer/src/wash_fsm.v:72$11": {
+          "hide_name": 1,
+          "type": "$add",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000110",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000110",
+            "Y_WIDTH": "00000000000000000000000000000110"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:72.33-72.44"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 107, 108, 109, 110, 111, 112 ],
+            "B": [ "1", "0", "0", "0", "0", "0" ],
+            "Y": [ 113, 114, 115, 116, 117, 118 ]
+          }
+        },
+        "$flatten\\u_fsm.$add$/workspaces/hand-hygiene-timer/src/wash_fsm.v:80$12": {
+          "hide_name": 1,
+          "type": "$add",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000110",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000110",
+            "Y_WIDTH": "00000000000000000000000000000110"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:80.30-80.40"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 119, 120, 121, 122, 123, 124 ],
+            "B": [ "1", "0", "0", "0", "0", "0" ],
+            "Y": [ 125, 126, 127, 128, 129, 130 ]
+          }
+        },
+        "$flatten\\u_fsm.$add$/workspaces/hand-hygiene-timer/src/wash_fsm.v:85$14": {
+          "hide_name": 1,
+          "type": "$add",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000110",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000110",
+            "Y_WIDTH": "00000000000000000000000000000110"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:85.36-85.46"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 119, 120, 121, 122, 123, 124 ],
+            "B": [ "1", "0", "0", "0", "0", "0" ],
+            "Y": [ 131, 132, 133, 134, 135, 136 ]
+          }
+        },
+        "$flatten\\u_fsm.$add$/workspaces/hand-hygiene-timer/src/wash_fsm.v:92$15": {
+          "hide_name": 1,
+          "type": "$add",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000110",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000110",
+            "Y_WIDTH": "00000000000000000000000000000110"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:92.30-92.40"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 119, 120, 121, 122, 123, 124 ],
+            "B": [ "1", "0", "0", "0", "0", "0" ],
+            "Y": [ 137, 138, 139, 140, 141, 142 ]
+          }
+        },
+        "$flatten\\u_fsm.$add$/workspaces/hand-hygiene-timer/src/wash_fsm.v:93$17": {
+          "hide_name": 1,
+          "type": "$add",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000110",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000110",
+            "Y_WIDTH": "00000000000000000000000000000110"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:93.62-93.72"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 119, 120, 121, 122, 123, 124 ],
+            "B": [ "1", "0", "0", "0", "0", "0" ],
+            "Y": [ 143, 144, 145, 146, 147, 148 ]
+          }
+        },
+        "$flatten\\u_fsm.$eq$/workspaces/hand-hygiene-timer/src/wash_fsm.v:107$19": {
+          "hide_name": 1,
+          "type": "$logic_not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:107.27-107.40"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "Y": [ 152 ]
+          }
+        },
+        "$flatten\\u_fsm.$eq$/workspaces/hand-hygiene-timer/src/wash_fsm.v:108$20": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:108.27-108.43"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "B": [ "1", "1", "0" ],
+            "Y": [ 11 ]
+          }
+        },
+        "$flatten\\u_fsm.$eq$/workspaces/hand-hygiene-timer/src/wash_fsm.v:109$21": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:109.27-109.46"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "B": [ "0", "0", "1" ],
+            "Y": [ 13 ]
+          }
+        },
+        "$flatten\\u_fsm.$eq$/workspaces/hand-hygiene-timer/src/wash_fsm.v:110$22": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:110.27-110.43"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "B": [ "1", "1", "0" ],
+            "Y": [ 153 ]
+          }
+        },
+        "$flatten\\u_fsm.$eq$/workspaces/hand-hygiene-timer/src/wash_fsm.v:110$23": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:110.49-110.68"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "B": [ "0", "0", "1" ],
+            "Y": [ 154 ]
+          }
+        },
+        "$flatten\\u_fsm.$eq$/workspaces/hand-hygiene-timer/src/wash_fsm.v:113$26": {
+          "hide_name": 1,
+          "type": "$logic_not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:113.13-113.26"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "Y": [ 155 ]
+          }
+        },
+        "$flatten\\u_fsm.$eq$/workspaces/hand-hygiene-timer/src/wash_fsm.v:113$27": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:113.30-113.47"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "B": [ "1", "0", "1" ],
+            "Y": [ 156 ]
+          }
+        },
+        "$flatten\\u_fsm.$ge$/workspaces/hand-hygiene-timer/src/wash_fsm.v:116$29": {
+          "hide_name": 1,
+          "type": "$ge",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000110",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000110",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:116.62-116.72"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 107, 108, 109, 110, 111, 112 ],
+            "B": [ 157, 158, 159, 160, 161, 162 ],
+            "Y": [ 163 ]
+          }
+        },
+        "$flatten\\u_fsm.$ge$/workspaces/hand-hygiene-timer/src/wash_fsm.v:116$30": {
+          "hide_name": 1,
+          "type": "$ge",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000110",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000110",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:116.48-116.58"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 107, 108, 109, 110, 111, 112 ],
+            "B": [ 164, 165, 166, 167, 168, 169 ],
+            "Y": [ 170 ]
+          }
+        },
+        "$flatten\\u_fsm.$ge$/workspaces/hand-hygiene-timer/src/wash_fsm.v:116$31": {
+          "hide_name": 1,
+          "type": "$ge",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000110",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000110",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:116.30-116.44"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 107, 108, 109, 110, 111, 112 ],
+            "B": [ 171, 172, 173, 174, 175, 176 ],
+            "Y": [ 177 ]
+          }
+        },
+        "$flatten\\u_fsm.$ge$/workspaces/hand-hygiene-timer/src/wash_fsm.v:67$10": {
+          "hide_name": 1,
+          "type": "$ge",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000110",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000110",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:67.34-67.48"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 107, 108, 109, 110, 111, 112 ],
+            "B": [ 171, 172, 173, 174, 175, 176 ],
+            "Y": [ 178 ]
+          }
+        },
+        "$flatten\\u_fsm.$ge$/workspaces/hand-hygiene-timer/src/wash_fsm.v:80$13": {
+          "hide_name": 1,
+          "type": "$ge",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000110",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000110",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:80.29-80.52"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 125, 126, 127, 128, 129, 130 ],
+            "B": [ "0", "1", "0", "0", "0", "0" ],
+            "Y": [ 179 ]
+          }
+        },
+        "$flatten\\u_fsm.$ge$/workspaces/hand-hygiene-timer/src/wash_fsm.v:92$16": {
+          "hide_name": 1,
+          "type": "$ge",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000110",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000110",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:92.29-92.51"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 137, 138, 139, 140, 141, 142 ],
+            "B": [ "0", "1", "0", "0", "0", "0" ],
+            "Y": [ 180 ]
+          }
+        },
+        "$flatten\\u_fsm.$logic_or$/workspaces/hand-hygiene-timer/src/wash_fsm.v:110$24": {
+          "hide_name": 1,
+          "type": "$logic_or",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:110.26-110.69"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 153 ],
+            "B": [ 154 ],
+            "Y": [ 12 ]
+          }
+        },
+        "$flatten\\u_fsm.$logic_or$/workspaces/hand-hygiene-timer/src/wash_fsm.v:113$28": {
+          "hide_name": 1,
+          "type": "$logic_or",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:113.13-113.47"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 155 ],
+            "B": [ 156 ],
+            "Y": [ 181 ]
+          }
+        },
+        "$flatten\\u_fsm.$procdff$214": {
+          "hide_name": 1,
+          "type": "$adff",
+          "parameters": {
+            "ARST_POLARITY": "00000000000000000000000000000000",
+            "ARST_VALUE": "0",
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:42.5-104.8"
+          },
+          "port_directions": {
+            "ARST": "input",
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "ARST": [ 3 ],
+            "CLK": [ 2 ],
+            "D": [ 182 ],
+            "Q": [ 183 ]
+          }
+        },
+        "$flatten\\u_fsm.$procdff$219": {
+          "hide_name": 1,
+          "type": "$adff",
+          "parameters": {
+            "ARST_POLARITY": "00000000000000000000000000000000",
+            "ARST_VALUE": "0",
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:42.5-104.8"
+          },
+          "port_directions": {
+            "ARST": "input",
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "ARST": [ 3 ],
+            "CLK": [ 2 ],
+            "D": [ 184 ],
+            "Q": [ 38 ]
+          }
+        },
+        "$flatten\\u_fsm.$procdff$224": {
+          "hide_name": 1,
+          "type": "$adff",
+          "parameters": {
+            "ARST_POLARITY": "00000000000000000000000000000000",
+            "ARST_VALUE": "000",
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:42.5-104.8"
+          },
+          "port_directions": {
+            "ARST": "input",
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "ARST": [ 3 ],
+            "CLK": [ 2 ],
+            "D": [ 185, 186, 187 ],
+            "Q": [ 149, 150, 151 ]
+          }
+        },
+        "$flatten\\u_fsm.$procdff$229": {
+          "hide_name": 1,
+          "type": "$adff",
+          "parameters": {
+            "ARST_POLARITY": "00000000000000000000000000000000",
+            "ARST_VALUE": "00",
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000000010"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:42.5-104.8"
+          },
+          "port_directions": {
+            "ARST": "input",
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "ARST": [ 3 ],
+            "CLK": [ 2 ],
+            "D": [ 188, 189 ],
+            "Q": [ 190, 191 ]
+          }
+        },
+        "$flatten\\u_fsm.$procdff$234": {
+          "hide_name": 1,
+          "type": "$adff",
+          "parameters": {
+            "ARST_POLARITY": "00000000000000000000000000000000",
+            "ARST_VALUE": "000000",
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000000110"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:42.5-104.8"
+          },
+          "port_directions": {
+            "ARST": "input",
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "ARST": [ 3 ],
+            "CLK": [ 2 ],
+            "D": [ 192, 193, 194, 195, 196, 197 ],
+            "Q": [ 107, 108, 109, 110, 111, 112 ]
+          }
+        },
+        "$flatten\\u_fsm.$procdff$239": {
+          "hide_name": 1,
+          "type": "$adff",
+          "parameters": {
+            "ARST_POLARITY": "00000000000000000000000000000000",
+            "ARST_VALUE": "000000",
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000000110"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:42.5-104.8"
+          },
+          "port_directions": {
+            "ARST": "input",
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "ARST": [ 3 ],
+            "CLK": [ 2 ],
+            "D": [ 198, 199, 200, 201, 202, 203 ],
+            "Q": [ 119, 120, 121, 122, 123, 124 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$100": {
+          "hide_name": 1,
+          "type": "$pmux",
+          "parameters": {
+            "S_WIDTH": "00000000000000000000000000000100",
+            "WIDTH": "00000000000000000000000000000110"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:53.13-102.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 119, 120, 121, 122, 123, 124 ],
+            "B": [ 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, "0", "0", "0", "0", "0", "0" ],
+            "S": [ 222, 223, 224, 225 ],
+            "Y": [ 198, 199, 200, 201, 202, 203 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$101_ANY": {
+          "hide_name": 1,
+          "type": "$reduce_or",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:53.13-102.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 226, 227 ],
+            "Y": [ 222 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$101_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:53.13-102.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "B": [ "1", "1", "0" ],
+            "Y": [ 226 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$101_CMP1": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:53.13-102.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "B": [ "0", "0", "1" ],
+            "Y": [ 227 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$103": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000110"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:80.29-80.52|/workspaces/hand-hygiene-timer/src/wash_fsm.v:80.25-86.28"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 131, 132, 133, 134, 135, 136 ],
+            "B": [ "0", "0", "0", "0", "0", "0" ],
+            "S": [ 179 ],
+            "Y": [ 228, 229, 230, 231, 232, 233 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$105": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000110"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:79.34-79.38|/workspaces/hand-hygiene-timer/src/wash_fsm.v:79.30-87.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 119, 120, 121, 122, 123, 124 ],
+            "B": [ 228, 229, 230, 231, 232, 233 ],
+            "S": [ 234 ],
+            "Y": [ 235, 236, 237, 238, 239, 240 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$108": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000110"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:77.25-77.31|/workspaces/hand-hygiene-timer/src/wash_fsm.v:77.21-87.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 235, 236, 237, 238, 239, 240 ],
+            "B": [ 119, 120, 121, 122, 123, 124 ],
+            "S": [ 80 ],
+            "Y": [ 210, 211, 212, 213, 214, 215 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$110_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:53.13-102.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "B": [ "0", "1", "0" ],
+            "Y": [ 223 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$112": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000110"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:67.34-67.48|/workspaces/hand-hygiene-timer/src/wash_fsm.v:67.30-73.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 119, 120, 121, 122, 123, 124 ],
+            "B": [ "0", "0", "0", "0", "0", "0" ],
+            "S": [ 178 ],
+            "Y": [ 241, 242, 243, 244, 245, 246 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$115": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000110"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:64.25-64.32|/workspaces/hand-hygiene-timer/src/wash_fsm.v:64.21-73.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0", "0", "0", "0", "0", "0" ],
+            "B": [ 241, 242, 243, 244, 245, 246 ],
+            "S": [ 80 ],
+            "Y": [ 216, 217, 218, 219, 220, 221 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$117_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:53.13-102.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "B": [ "1", "0", "0" ],
+            "Y": [ 224 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$118_CMP0": {
+          "hide_name": 1,
+          "type": "$logic_not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:53.13-102.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "Y": [ 225 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$123": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000110"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:71.34-71.38|/workspaces/hand-hygiene-timer/src/wash_fsm.v:71.30-73.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 107, 108, 109, 110, 111, 112 ],
+            "B": [ 113, 114, 115, 116, 117, 118 ],
+            "S": [ 234 ],
+            "Y": [ 247, 248, 249, 250, 251, 252 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$126": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000110"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:67.34-67.48|/workspaces/hand-hygiene-timer/src/wash_fsm.v:67.30-73.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 247, 248, 249, 250, 251, 252 ],
+            "B": [ 107, 108, 109, 110, 111, 112 ],
+            "S": [ 178 ],
+            "Y": [ 253, 254, 255, 256, 257, 258 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$129": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000110"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:64.25-64.32|/workspaces/hand-hygiene-timer/src/wash_fsm.v:64.21-73.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 107, 108, 109, 110, 111, 112 ],
+            "B": [ 253, 254, 255, 256, 257, 258 ],
+            "S": [ 80 ],
+            "Y": [ 259, 260, 261, 262, 263, 264 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$131": {
+          "hide_name": 1,
+          "type": "$pmux",
+          "parameters": {
+            "S_WIDTH": "00000000000000000000000000000010",
+            "WIDTH": "00000000000000000000000000000110"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:53.13-102.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 107, 108, 109, 110, 111, 112 ],
+            "B": [ 259, 260, 261, 262, 263, 264, "0", "0", "0", "0", "0", "0" ],
+            "S": [ 265, 266 ],
+            "Y": [ 192, 193, 194, 195, 196, 197 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$132_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:53.13-102.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "B": [ "1", "0", "0" ],
+            "Y": [ 265 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$133_CMP0": {
+          "hide_name": 1,
+          "type": "$logic_not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:53.13-102.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "Y": [ 266 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$139": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000010"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:57.25-57.31|/workspaces/hand-hygiene-timer/src/wash_fsm.v:57.21-60.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 190, 191 ],
+            "B": [ 5, 6 ],
+            "S": [ 80 ],
+            "Y": [ 267, 268 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$141": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000010"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:53.13-102.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 190, 191 ],
+            "B": [ 267, 268 ],
+            "S": [ 269 ],
+            "Y": [ 188, 189 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$142_CMP0": {
+          "hide_name": 1,
+          "type": "$logic_not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:53.13-102.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "Y": [ 269 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$144": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:98.25-98.32|/workspaces/hand-hygiene-timer/src/wash_fsm.v:98.21-98.48"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0", "0", "0" ],
+            "B": [ 149, 150, 151 ],
+            "S": [ 80 ],
+            "Y": [ 270, 271, 272 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$146": {
+          "hide_name": 1,
+          "type": "$pmux",
+          "parameters": {
+            "S_WIDTH": "00000000000000000000000000000101",
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:53.13-102.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0", "0", "0" ],
+            "B": [ 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284 ],
+            "S": [ 285, 286, 287, 288, 289 ],
+            "Y": [ 185, 186, 187 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$147_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:53.13-102.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "B": [ "1", "0", "1" ],
+            "Y": [ 285 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$149": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:92.29-92.51|/workspaces/hand-hygiene-timer/src/wash_fsm.v:92.25-93.73"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "B": [ "1", "0", "1" ],
+            "S": [ 180 ],
+            "Y": [ 290, 291, 292 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$151": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:91.25-91.29|/workspaces/hand-hygiene-timer/src/wash_fsm.v:91.21-94.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "B": [ 290, 291, 292 ],
+            "S": [ 234 ],
+            "Y": [ 273, 274, 275 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$153_ANY": {
+          "hide_name": 1,
+          "type": "$reduce_or",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:53.13-102.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 293, 294 ],
+            "Y": [ 286 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$153_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:53.13-102.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "B": [ "1", "1", "0" ],
+            "Y": [ 293 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$153_CMP1": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:53.13-102.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "B": [ "0", "0", "1" ],
+            "Y": [ 294 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$155": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:80.29-80.52|/workspaces/hand-hygiene-timer/src/wash_fsm.v:80.25-86.28"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "B": [ "0", "0", "1" ],
+            "S": [ 179 ],
+            "Y": [ 295, 296, 297 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$157": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:79.34-79.38|/workspaces/hand-hygiene-timer/src/wash_fsm.v:79.30-87.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "B": [ 295, 296, 297 ],
+            "S": [ 234 ],
+            "Y": [ 298, 299, 300 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$160": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:77.25-77.31|/workspaces/hand-hygiene-timer/src/wash_fsm.v:77.21-87.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 298, 299, 300 ],
+            "B": [ "1", "0", "0" ],
+            "S": [ 80 ],
+            "Y": [ 276, 277, 278 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$162_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:53.13-102.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "B": [ "0", "1", "0" ],
+            "Y": [ 287 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$164": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:67.34-67.48|/workspaces/hand-hygiene-timer/src/wash_fsm.v:67.30-73.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "B": [ "1", "1", "0" ],
+            "S": [ 178 ],
+            "Y": [ 301, 302, 303 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$167": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:64.25-64.32|/workspaces/hand-hygiene-timer/src/wash_fsm.v:64.21-73.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0", "1", "0" ],
+            "B": [ 301, 302, 303 ],
+            "S": [ 80 ],
+            "Y": [ 279, 280, 281 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$169_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:53.13-102.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "B": [ "1", "0", "0" ],
+            "Y": [ 288 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$170": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:57.25-57.31|/workspaces/hand-hygiene-timer/src/wash_fsm.v:57.21-60.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "B": [ "1", "0", "0" ],
+            "S": [ 80 ],
+            "Y": [ 282, 283, 284 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$172_CMP0": {
+          "hide_name": 1,
+          "type": "$logic_not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:53.13-102.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "Y": [ 289 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$174": {
+          "hide_name": 1,
+          "type": "$pmux",
+          "parameters": {
+            "S_WIDTH": "00000000000000000000000000000010",
+            "WIDTH": "00000000000000000000000000000110"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:34.9-38.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "1", "0", "1", "1", "0", "0" ],
+            "B": [ "0", "1", "0", "1", "1", "0", "0", "0", "1", "0", "1", "0" ],
+            "S": [ 304, 305 ],
+            "Y": [ 164, 165, 166, 167, 168, 169 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$175_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:34.9-38.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 190, 191 ],
+            "B": [ "0", "1" ],
+            "Y": [ 304 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$176_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:34.9-38.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 190, 191 ],
+            "B": [ "1", "0" ],
+            "Y": [ 305 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$178": {
+          "hide_name": 1,
+          "type": "$pmux",
+          "parameters": {
+            "S_WIDTH": "00000000000000000000000000000010",
+            "WIDTH": "00000000000000000000000000000110"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:34.9-38.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0", "1", "1", "0", "0", "0" ],
+            "B": [ "1", "0", "1", "1", "0", "0", "0", "1", "0", "1", "0", "0" ],
+            "S": [ 306, 307 ],
+            "Y": [ 157, 158, 159, 160, 161, 162 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$179_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:34.9-38.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 190, 191 ],
+            "B": [ "0", "1" ],
+            "Y": [ 306 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$180_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:34.9-38.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 190, 191 ],
+            "B": [ "1", "0" ],
+            "Y": [ 307 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$182": {
+          "hide_name": 1,
+          "type": "$pmux",
+          "parameters": {
+            "S_WIDTH": "00000000000000000000000000000010",
+            "WIDTH": "00000000000000000000000000000110"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:34.9-38.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0", "0", "1", "0", "1", "0" ],
+            "B": [ "0", "0", "0", "1", "0", "1", "0", "1", "1", "1", "1", "0" ],
+            "S": [ 308, 309 ],
+            "Y": [ 171, 172, 173, 174, 175, 176 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$183_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:34.9-38.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 190, 191 ],
+            "B": [ "0", "1" ],
+            "Y": [ 308 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$184_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:34.9-38.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 190, 191 ],
+            "B": [ "1", "0" ],
+            "Y": [ 309 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$66": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:113.13-113.47|/workspaces/hand-hygiene-timer/src/wash_fsm.v:113.9-116.75"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 163, 170, 177 ],
+            "B": [ "0", "0", "0" ],
+            "S": [ 181 ],
+            "Y": [ 8, 9, 10 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$72": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:80.29-80.52|/workspaces/hand-hygiene-timer/src/wash_fsm.v:80.25-86.28"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0" ],
+            "B": [ "1" ],
+            "S": [ 179 ],
+            "Y": [ 310 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$74": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:79.34-79.38|/workspaces/hand-hygiene-timer/src/wash_fsm.v:79.30-87.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0" ],
+            "B": [ 310 ],
+            "S": [ 234 ],
+            "Y": [ 311 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$77": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:77.25-77.31|/workspaces/hand-hygiene-timer/src/wash_fsm.v:77.21-87.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 311 ],
+            "B": [ "0" ],
+            "S": [ 80 ],
+            "Y": [ 312 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$79": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:53.13-102.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0" ],
+            "B": [ 312 ],
+            "S": [ 313 ],
+            "Y": [ 184 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$80_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:53.13-102.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "B": [ "0", "1", "0" ],
+            "Y": [ 313 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$86": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:67.34-67.48|/workspaces/hand-hygiene-timer/src/wash_fsm.v:67.30-73.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0" ],
+            "B": [ "1" ],
+            "S": [ 178 ],
+            "Y": [ 314 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$89": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:64.25-64.32|/workspaces/hand-hygiene-timer/src/wash_fsm.v:64.21-73.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0" ],
+            "B": [ 314 ],
+            "S": [ 80 ],
+            "Y": [ 315 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$91": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:53.13-102.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0" ],
+            "B": [ 315 ],
+            "S": [ 316 ],
+            "Y": [ 182 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$92_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:0.0-0.0|/workspaces/hand-hygiene-timer/src/wash_fsm.v:53.13-102.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150, 151 ],
+            "B": [ "1", "0", "0" ],
+            "Y": [ 316 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$96": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000110"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:92.29-92.51|/workspaces/hand-hygiene-timer/src/wash_fsm.v:92.25-93.73"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 143, 144, 145, 146, 147, 148 ],
+            "B": [ 119, 120, 121, 122, 123, 124 ],
+            "S": [ 180 ],
+            "Y": [ 317, 318, 319, 320, 321, 322 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$98": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000110"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:91.25-91.29|/workspaces/hand-hygiene-timer/src/wash_fsm.v:91.21-94.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 119, 120, 121, 122, 123, 124 ],
+            "B": [ 317, 318, 319, 320, 321, 322 ],
+            "S": [ 234 ],
+            "Y": [ 204, 205, 206, 207, 208, 209 ]
+          }
+        },
+        "$flatten\\u_good.$add$/workspaces/hand-hygiene-timer/src/sat_counter.v:17$5": {
+          "hide_name": 1,
+          "type": "$add",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000001000",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000001000"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/sat_counter.v:17.22-17.34"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 14, 15, 16, 17, 18, 19, 20, 21 ],
+            "B": [ "1" ],
+            "Y": [ 323, 324, 325, 326, 327, 328, 329, 330 ]
+          }
+        },
+        "$flatten\\u_good.$logic_and$/workspaces/hand-hygiene-timer/src/sat_counter.v:16$4": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/sat_counter.v:16.18-16.45"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 183 ],
+            "B": [ 331 ],
+            "Y": [ 332 ]
+          }
+        },
+        "$flatten\\u_good.$ne$/workspaces/hand-hygiene-timer/src/sat_counter.v:16$3": {
+          "hide_name": 1,
+          "type": "$ne",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000001000",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000001000",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/sat_counter.v:16.26-16.44"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 14, 15, 16, 17, 18, 19, 20, 21 ],
+            "B": [ "1", "1", "1", "1", "1", "1", "1", "1" ],
+            "Y": [ 331 ]
+          }
+        },
+        "$flatten\\u_good.$procdff$244": {
+          "hide_name": 1,
+          "type": "$adff",
+          "parameters": {
+            "ARST_POLARITY": "00000000000000000000000000000000",
+            "ARST_VALUE": "00000000",
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000001000"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/sat_counter.v:11.5-18.8"
+          },
+          "port_directions": {
+            "ARST": "input",
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "ARST": [ 3 ],
+            "CLK": [ 2 ],
+            "D": [ 333, 334, 335, 336, 337, 338, 339, 340 ],
+            "Q": [ 14, 15, 16, 17, 18, 19, 20, 21 ]
+          }
+        },
+        "$flatten\\u_good.$procmux$185": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000001000"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/sat_counter.v:16.18-16.45|/workspaces/hand-hygiene-timer/src/sat_counter.v:16.14-17.35"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 14, 15, 16, 17, 18, 19, 20, 21 ],
+            "B": [ 323, 324, 325, 326, 327, 328, 329, 330 ],
+            "S": [ 332 ],
+            "Y": [ 341, 342, 343, 344, 345, 346, 347, 348 ]
+          }
+        },
+        "$flatten\\u_good.$procmux$188": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000001000"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/sat_counter.v:14.18-14.23|/workspaces/hand-hygiene-timer/src/sat_counter.v:14.14-17.35"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 341, 342, 343, 344, 345, 346, 347, 348 ],
+            "B": [ "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "S": [ 7 ],
+            "Y": [ 333, 334, 335, 336, 337, 338, 339, 340 ]
+          }
+        },
+        "$flatten\\u_sync.$procdff$249": {
+          "hide_name": 1,
+          "type": "$adff",
+          "parameters": {
+            "ARST_POLARITY": "00000000000000000000000000000000",
+            "ARST_VALUE": "0",
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/synchronizer.v:10.5-18.8"
+          },
+          "port_directions": {
+            "ARST": "input",
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "ARST": [ 3 ],
+            "CLK": [ 2 ],
+            "D": [ 4 ],
+            "Q": [ 349 ]
+          }
+        },
+        "$flatten\\u_sync.$procdff$254": {
+          "hide_name": 1,
+          "type": "$adff",
+          "parameters": {
+            "ARST_POLARITY": "00000000000000000000000000000000",
+            "ARST_VALUE": "0",
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/synchronizer.v:10.5-18.8"
+          },
+          "port_directions": {
+            "ARST": "input",
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "ARST": [ 3 ],
+            "CLK": [ 2 ],
+            "D": [ 349 ],
+            "Q": [ 79 ]
+          }
+        },
+        "$flatten\\u_tick.$add$/workspaces/hand-hygiene-timer/src/tick_gen.v:26$35": {
+          "hide_name": 1,
+          "type": "$add",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000001111",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000001111"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/tick_gen.v:26.21-26.31"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364 ],
+            "B": [ "1" ],
+            "Y": [ 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379 ]
+          }
+        },
+        "$flatten\\u_tick.$eq$/workspaces/hand-hygiene-timer/src/tick_gen.v:22$34": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000001111",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000001111",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/tick_gen.v:22.23-22.34"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364 ],
+            "B": [ "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" ],
+            "Y": [ 380 ]
+          }
+        },
+        "$flatten\\u_tick.$procdff$204": {
+          "hide_name": 1,
+          "type": "$adff",
+          "parameters": {
+            "ARST_POLARITY": "00000000000000000000000000000000",
+            "ARST_VALUE": "0",
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/tick_gen.v:15.5-29.8"
+          },
+          "port_directions": {
+            "ARST": "input",
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "ARST": [ 3 ],
+            "CLK": [ 2 ],
+            "D": [ 381 ],
+            "Q": [ 234 ]
+          }
+        },
+        "$flatten\\u_tick.$procdff$209": {
+          "hide_name": 1,
+          "type": "$adff",
+          "parameters": {
+            "ARST_POLARITY": "00000000000000000000000000000000",
+            "ARST_VALUE": "000000000000000",
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000001111"
+          },
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/tick_gen.v:15.5-29.8"
+          },
+          "port_directions": {
+            "ARST": "input",
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "ARST": [ 3 ],
+            "CLK": [ 2 ],
+            "D": [ 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396 ],
+            "Q": [ 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364 ]
+          }
+        },
+        "$flatten\\u_tick.$procmux$54": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/tick_gen.v:22.23-22.34|/workspaces/hand-hygiene-timer/src/tick_gen.v:22.19-28.12"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0" ],
+            "B": [ "1" ],
+            "S": [ 380 ],
+            "Y": [ 397 ]
+          }
+        },
+        "$flatten\\u_tick.$procmux$57": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/tick_gen.v:19.22-19.27|/workspaces/hand-hygiene-timer/src/tick_gen.v:19.18-28.12"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 397 ],
+            "B": [ "0" ],
+            "S": [ 152 ],
+            "Y": [ 381 ]
+          }
+        },
+        "$flatten\\u_tick.$procmux$60": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000001111"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/tick_gen.v:22.23-22.34|/workspaces/hand-hygiene-timer/src/tick_gen.v:22.19-28.12"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379 ],
+            "B": [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "S": [ 380 ],
+            "Y": [ 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412 ]
+          }
+        },
+        "$flatten\\u_tick.$procmux$63": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000001111"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/workspaces/hand-hygiene-timer/src/tick_gen.v:19.22-19.27|/workspaces/hand-hygiene-timer/src/tick_gen.v:19.18-28.12"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412 ],
+            "B": [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "S": [ 152 ],
+            "Y": [ 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396 ]
+          }
+        }
+      },
+      "netnames": {
+        "$flatten\\u_bad.$0\\count[7:0]": {
+          "hide_name": 1,
+          "bits": [ 41, 42, 43, 44, 45, 46, 47, 48 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/sat_counter.v:11.5-18.8"
+          }
+        },
+        "$flatten\\u_bad.$add$/workspaces/hand-hygiene-timer/src/sat_counter.v:17$5_Y": {
+          "hide_name": 1,
+          "bits": [ 30, 31, 32, 33, 34, 35, 36, 37 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/sat_counter.v:17.22-17.34"
+          }
+        },
+        "$flatten\\u_bad.$logic_and$/workspaces/hand-hygiene-timer/src/sat_counter.v:16$4_Y": {
+          "hide_name": 1,
+          "bits": [ 40 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/sat_counter.v:16.18-16.45"
+          }
+        },
+        "$flatten\\u_bad.$ne$/workspaces/hand-hygiene-timer/src/sat_counter.v:16$3_Y": {
+          "hide_name": 1,
+          "bits": [ 39 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/sat_counter.v:16.26-16.44"
+          }
+        },
+        "$flatten\\u_bad.$procmux$185_Y": {
+          "hide_name": 1,
+          "bits": [ 49, 50, 51, 52, 53, 54, 55, 56 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_deb.$0\\cnt[10:0]": {
+          "hide_name": 1,
+          "bits": [ 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/debounce.v:13.5-26.8"
+          }
+        },
+        "$flatten\\u_deb.$0\\out[0:0]": {
+          "hide_name": 1,
+          "bits": [ 82 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/debounce.v:13.5-26.8"
+          }
+        },
+        "$flatten\\u_deb.$add$/workspaces/hand-hygiene-timer/src/debounce.v:20$39_Y": {
+          "hide_name": 1,
+          "bits": [ 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/debounce.v:20.20-20.30"
+          }
+        },
+        "$flatten\\u_deb.$eq$/workspaces/hand-hygiene-timer/src/debounce.v:17$38_Y": {
+          "hide_name": 1,
+          "bits": [ 81 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/debounce.v:17.22-17.31"
+          }
+        },
+        "$flatten\\u_deb.$procmux$43_Y": {
+          "hide_name": 1,
+          "bits": [ 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_deb.$procmux$44_CMP": {
+          "hide_name": 1,
+          "bits": [ 94 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_deb.$procmux$48_Y": {
+          "hide_name": 1,
+          "bits": [ 106 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$0\\aux[5:0]": {
+          "hide_name": 1,
+          "bits": [ 198, 199, 200, 201, 202, 203 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:42.5-104.8"
+          }
+        },
+        "$flatten\\u_fsm.$0\\bad_inc[0:0]": {
+          "hide_name": 1,
+          "bits": [ 184 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:42.5-104.8"
+          }
+        },
+        "$flatten\\u_fsm.$0\\good_inc[0:0]": {
+          "hide_name": 1,
+          "bits": [ 182 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:42.5-104.8"
+          }
+        },
+        "$flatten\\u_fsm.$0\\mode_r[1:0]": {
+          "hide_name": 1,
+          "bits": [ 188, 189 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:42.5-104.8"
+          }
+        },
+        "$flatten\\u_fsm.$0\\secs[5:0]": {
+          "hide_name": 1,
+          "bits": [ 192, 193, 194, 195, 196, 197 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:42.5-104.8"
+          }
+        },
+        "$flatten\\u_fsm.$0\\state[2:0]": {
+          "hide_name": 1,
+          "bits": [ 185, 186, 187 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:42.5-104.8"
+          }
+        },
+        "$flatten\\u_fsm.$add$/workspaces/hand-hygiene-timer/src/wash_fsm.v:72$11_Y": {
+          "hide_name": 1,
+          "bits": [ 113, 114, 115, 116, 117, 118 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:72.33-72.44"
+          }
+        },
+        "$flatten\\u_fsm.$add$/workspaces/hand-hygiene-timer/src/wash_fsm.v:80$12_Y": {
+          "hide_name": 1,
+          "bits": [ 125, 126, 127, 128, 129, 130 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:80.30-80.40"
+          }
+        },
+        "$flatten\\u_fsm.$add$/workspaces/hand-hygiene-timer/src/wash_fsm.v:85$14_Y": {
+          "hide_name": 1,
+          "bits": [ 131, 132, 133, 134, 135, 136 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:85.36-85.46"
+          }
+        },
+        "$flatten\\u_fsm.$add$/workspaces/hand-hygiene-timer/src/wash_fsm.v:92$15_Y": {
+          "hide_name": 1,
+          "bits": [ 137, 138, 139, 140, 141, 142 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:92.30-92.40"
+          }
+        },
+        "$flatten\\u_fsm.$add$/workspaces/hand-hygiene-timer/src/wash_fsm.v:93$17_Y": {
+          "hide_name": 1,
+          "bits": [ 143, 144, 145, 146, 147, 148 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:93.62-93.72"
+          }
+        },
+        "$flatten\\u_fsm.$eq$/workspaces/hand-hygiene-timer/src/wash_fsm.v:110$22_Y": {
+          "hide_name": 1,
+          "bits": [ 153 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:110.27-110.43"
+          }
+        },
+        "$flatten\\u_fsm.$eq$/workspaces/hand-hygiene-timer/src/wash_fsm.v:110$23_Y": {
+          "hide_name": 1,
+          "bits": [ 154 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:110.49-110.68"
+          }
+        },
+        "$flatten\\u_fsm.$eq$/workspaces/hand-hygiene-timer/src/wash_fsm.v:113$26_Y": {
+          "hide_name": 1,
+          "bits": [ 155 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:113.13-113.26"
+          }
+        },
+        "$flatten\\u_fsm.$eq$/workspaces/hand-hygiene-timer/src/wash_fsm.v:113$27_Y": {
+          "hide_name": 1,
+          "bits": [ 156 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:113.30-113.47"
+          }
+        },
+        "$flatten\\u_fsm.$ge$/workspaces/hand-hygiene-timer/src/wash_fsm.v:116$29_Y": {
+          "hide_name": 1,
+          "bits": [ 163 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:116.62-116.72"
+          }
+        },
+        "$flatten\\u_fsm.$ge$/workspaces/hand-hygiene-timer/src/wash_fsm.v:116$30_Y": {
+          "hide_name": 1,
+          "bits": [ 170 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:116.48-116.58"
+          }
+        },
+        "$flatten\\u_fsm.$ge$/workspaces/hand-hygiene-timer/src/wash_fsm.v:116$31_Y": {
+          "hide_name": 1,
+          "bits": [ 177 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:116.30-116.44"
+          }
+        },
+        "$flatten\\u_fsm.$ge$/workspaces/hand-hygiene-timer/src/wash_fsm.v:67$10_Y": {
+          "hide_name": 1,
+          "bits": [ 178 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:67.34-67.48"
+          }
+        },
+        "$flatten\\u_fsm.$ge$/workspaces/hand-hygiene-timer/src/wash_fsm.v:80$13_Y": {
+          "hide_name": 1,
+          "bits": [ 179 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:80.29-80.52"
+          }
+        },
+        "$flatten\\u_fsm.$ge$/workspaces/hand-hygiene-timer/src/wash_fsm.v:92$16_Y": {
+          "hide_name": 1,
+          "bits": [ 180 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:92.29-92.51"
+          }
+        },
+        "$flatten\\u_fsm.$logic_or$/workspaces/hand-hygiene-timer/src/wash_fsm.v:113$28_Y": {
+          "hide_name": 1,
+          "bits": [ 181 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:113.13-113.47"
+          }
+        },
+        "$flatten\\u_fsm.$procmux$101_CMP": {
+          "hide_name": 1,
+          "bits": [ 226, 227 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$101_CTRL": {
+          "hide_name": 1,
+          "bits": [ 222 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$103_Y": {
+          "hide_name": 1,
+          "bits": [ 228, 229, 230, 231, 232, 233 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$105_Y": {
+          "hide_name": 1,
+          "bits": [ 235, 236, 237, 238, 239, 240 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$108_Y": {
+          "hide_name": 1,
+          "bits": [ 210, 211, 212, 213, 214, 215 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$110_CMP": {
+          "hide_name": 1,
+          "bits": [ 223 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$112_Y": {
+          "hide_name": 1,
+          "bits": [ 241, 242, 243, 244, 245, 246 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$115_Y": {
+          "hide_name": 1,
+          "bits": [ 216, 217, 218, 219, 220, 221 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$117_CMP": {
+          "hide_name": 1,
+          "bits": [ 224 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$118_CMP": {
+          "hide_name": 1,
+          "bits": [ 225 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$123_Y": {
+          "hide_name": 1,
+          "bits": [ 247, 248, 249, 250, 251, 252 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$126_Y": {
+          "hide_name": 1,
+          "bits": [ 253, 254, 255, 256, 257, 258 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$129_Y": {
+          "hide_name": 1,
+          "bits": [ 259, 260, 261, 262, 263, 264 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$132_CMP": {
+          "hide_name": 1,
+          "bits": [ 265 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$133_CMP": {
+          "hide_name": 1,
+          "bits": [ 266 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$139_Y": {
+          "hide_name": 1,
+          "bits": [ 267, 268 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$142_CMP": {
+          "hide_name": 1,
+          "bits": [ 269 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$144_Y": {
+          "hide_name": 1,
+          "bits": [ 270, 271, 272 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$147_CMP": {
+          "hide_name": 1,
+          "bits": [ 285 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$149_Y": {
+          "hide_name": 1,
+          "bits": [ 290, 291, 292 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$151_Y": {
+          "hide_name": 1,
+          "bits": [ 273, 274, 275 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$153_CMP": {
+          "hide_name": 1,
+          "bits": [ 293, 294 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$153_CTRL": {
+          "hide_name": 1,
+          "bits": [ 286 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$155_Y": {
+          "hide_name": 1,
+          "bits": [ 295, 296, 297 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$157_Y": {
+          "hide_name": 1,
+          "bits": [ 298, 299, 300 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$160_Y": {
+          "hide_name": 1,
+          "bits": [ 276, 277, 278 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$162_CMP": {
+          "hide_name": 1,
+          "bits": [ 287 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$164_Y": {
+          "hide_name": 1,
+          "bits": [ 301, 302, 303 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$167_Y": {
+          "hide_name": 1,
+          "bits": [ 279, 280, 281 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$169_CMP": {
+          "hide_name": 1,
+          "bits": [ 288 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$170_Y": {
+          "hide_name": 1,
+          "bits": [ 282, 283, 284 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$172_CMP": {
+          "hide_name": 1,
+          "bits": [ 289 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$175_CMP": {
+          "hide_name": 1,
+          "bits": [ 304 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$176_CMP": {
+          "hide_name": 1,
+          "bits": [ 305 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$179_CMP": {
+          "hide_name": 1,
+          "bits": [ 306 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$180_CMP": {
+          "hide_name": 1,
+          "bits": [ 307 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$183_CMP": {
+          "hide_name": 1,
+          "bits": [ 308 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$184_CMP": {
+          "hide_name": 1,
+          "bits": [ 309 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$72_Y": {
+          "hide_name": 1,
+          "bits": [ 310 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$74_Y": {
+          "hide_name": 1,
+          "bits": [ 311 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$77_Y": {
+          "hide_name": 1,
+          "bits": [ 312 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$80_CMP": {
+          "hide_name": 1,
+          "bits": [ 313 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$86_Y": {
+          "hide_name": 1,
+          "bits": [ 314 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$89_Y": {
+          "hide_name": 1,
+          "bits": [ 315 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$92_CMP": {
+          "hide_name": 1,
+          "bits": [ 316 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$96_Y": {
+          "hide_name": 1,
+          "bits": [ 317, 318, 319, 320, 321, 322 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$98_Y": {
+          "hide_name": 1,
+          "bits": [ 204, 205, 206, 207, 208, 209 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_good.$0\\count[7:0]": {
+          "hide_name": 1,
+          "bits": [ 333, 334, 335, 336, 337, 338, 339, 340 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/sat_counter.v:11.5-18.8"
+          }
+        },
+        "$flatten\\u_good.$add$/workspaces/hand-hygiene-timer/src/sat_counter.v:17$5_Y": {
+          "hide_name": 1,
+          "bits": [ 323, 324, 325, 326, 327, 328, 329, 330 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/sat_counter.v:17.22-17.34"
+          }
+        },
+        "$flatten\\u_good.$logic_and$/workspaces/hand-hygiene-timer/src/sat_counter.v:16$4_Y": {
+          "hide_name": 1,
+          "bits": [ 332 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/sat_counter.v:16.18-16.45"
+          }
+        },
+        "$flatten\\u_good.$ne$/workspaces/hand-hygiene-timer/src/sat_counter.v:16$3_Y": {
+          "hide_name": 1,
+          "bits": [ 331 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/sat_counter.v:16.26-16.44"
+          }
+        },
+        "$flatten\\u_good.$procmux$185_Y": {
+          "hide_name": 1,
+          "bits": [ 341, 342, 343, 344, 345, 346, 347, 348 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tick.$0\\cnt[14:0]": {
+          "hide_name": 1,
+          "bits": [ 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/tick_gen.v:15.5-29.8"
+          }
+        },
+        "$flatten\\u_tick.$0\\tick[0:0]": {
+          "hide_name": 1,
+          "bits": [ 381 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/tick_gen.v:15.5-29.8"
+          }
+        },
+        "$flatten\\u_tick.$add$/workspaces/hand-hygiene-timer/src/tick_gen.v:26$35_Y": {
+          "hide_name": 1,
+          "bits": [ 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/tick_gen.v:26.21-26.31"
+          }
+        },
+        "$flatten\\u_tick.$eq$/workspaces/hand-hygiene-timer/src/tick_gen.v:22$34_Y": {
+          "hide_name": 1,
+          "bits": [ 380 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/tick_gen.v:22.23-22.34"
+          }
+        },
+        "$flatten\\u_tick.$procmux$54_Y": {
+          "hide_name": 1,
+          "bits": [ 397 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tick.$procmux$60_Y": {
+          "hide_name": 1,
+          "bits": [ 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412 ],
+          "attributes": {
+          }
+        },
+        "alarm_short": {
+          "hide_name": 0,
+          "bits": [ 13 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/top.v:15.23-15.34"
+          }
+        },
+        "bad_cnt": {
+          "hide_name": 0,
+          "bits": [ 22, 23, 24, 25, 26, 27, 28, 29 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/top.v:17.23-17.30"
+          }
+        },
+        "bad_inc": {
+          "hide_name": 0,
+          "bits": [ 38 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/top.v:24.10-24.17"
+          }
+        },
+        "buzzer": {
+          "hide_name": 0,
+          "bits": [ 12 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/top.v:14.23-14.29"
+          }
+        },
+        "clear_log": {
+          "hide_name": 0,
+          "bits": [ 7 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/top.v:11.23-11.32"
+          }
+        },
+        "clk": {
+          "hide_name": 0,
+          "bits": [ 2 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/top.v:7.23-7.26"
+          }
+        },
+        "good_cnt": {
+          "hide_name": 0,
+          "bits": [ 14, 15, 16, 17, 18, 19, 20, 21 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/top.v:16.23-16.31"
+          }
+        },
+        "good_inc": {
+          "hide_name": 0,
+          "bits": [ 183 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/top.v:23.10-23.18"
+          }
+        },
+        "led_done": {
+          "hide_name": 0,
+          "bits": [ 11 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/top.v:13.23-13.31"
+          }
+        },
+        "led_progress": {
+          "hide_name": 0,
+          "bits": [ 8, 9, 10 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/top.v:12.23-12.35"
+          }
+        },
+        "mode_sel": {
+          "hide_name": 0,
+          "bits": [ 5, 6 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/top.v:10.23-10.31"
+          }
+        },
+        "rst_n": {
+          "hide_name": 0,
+          "bits": [ 3 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/top.v:8.23-8.28"
+          }
+        },
+        "sensor_clean": {
+          "hide_name": 0,
+          "bits": [ 80 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/top.v:20.10-20.22"
+          }
+        },
+        "sensor_in": {
+          "hide_name": 0,
+          "bits": [ 4 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/top.v:9.23-9.32"
+          }
+        },
+        "sensor_sync": {
+          "hide_name": 0,
+          "bits": [ 79 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/top.v:19.10-19.21"
+          }
+        },
+        "tick": {
+          "hide_name": 0,
+          "bits": [ 234 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/top.v:21.10-21.14"
+          }
+        },
+        "tick_clear": {
+          "hide_name": 0,
+          "bits": [ 152 ],
+          "attributes": {
+            "src": "/workspaces/hand-hygiene-timer/src/top.v:22.10-22.20"
+          }
+        },
+        "u_deb.cnt": {
+          "hide_name": 0,
+          "bits": [ 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67 ],
+          "attributes": {
+            "hdlname": "u_deb cnt",
+            "src": "/workspaces/hand-hygiene-timer/src/debounce.v:11.21-11.24"
+          }
+        },
+        "u_fsm.aux": {
+          "hide_name": 0,
+          "bits": [ 119, 120, 121, 122, 123, 124 ],
+          "attributes": {
+            "hdlname": "u_fsm aux",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:29.15-29.18"
+          }
+        },
+        "u_fsm.mode_r": {
+          "hide_name": 0,
+          "bits": [ 190, 191 ],
+          "attributes": {
+            "hdlname": "u_fsm mode_r",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:27.15-27.21"
+          }
+        },
+        "u_fsm.secs": {
+          "hide_name": 0,
+          "bits": [ 107, 108, 109, 110, 111, 112 ],
+          "attributes": {
+            "hdlname": "u_fsm secs",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:28.15-28.19"
+          }
+        },
+        "u_fsm.state": {
+          "hide_name": 0,
+          "bits": [ 149, 150, 151 ],
+          "attributes": {
+            "hdlname": "u_fsm state",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:26.15-26.20"
+          }
+        },
+        "u_fsm.t1": {
+          "hide_name": 0,
+          "bits": [ 157, 158, 159, 160, 161, 162 ],
+          "attributes": {
+            "hdlname": "u_fsm t1",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:32.23-32.25"
+          }
+        },
+        "u_fsm.t2": {
+          "hide_name": 0,
+          "bits": [ 164, 165, 166, 167, 168, 169 ],
+          "attributes": {
+            "hdlname": "u_fsm t2",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:32.27-32.29"
+          }
+        },
+        "u_fsm.target": {
+          "hide_name": 0,
+          "bits": [ 171, 172, 173, 174, 175, 176 ],
+          "attributes": {
+            "hdlname": "u_fsm target",
+            "src": "/workspaces/hand-hygiene-timer/src/wash_fsm.v:32.15-32.21"
+          }
+        },
+        "u_sync.ff1": {
+          "hide_name": 0,
+          "bits": [ 349 ],
+          "attributes": {
+            "hdlname": "u_sync ff1",
+            "src": "/workspaces/hand-hygiene-timer/src/synchronizer.v:8.9-8.12"
+          }
+        },
+        "u_tick.cnt": {
+          "hide_name": 0,
+          "bits": [ 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364 ],
+          "attributes": {
+            "hdlname": "u_tick cnt",
+            "src": "/workspaces/hand-hygiene-timer/src/tick_gen.v:13.17-13.20"
+          }
+        }
+      }
+    }
+  }
+}

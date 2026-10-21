@@ -1,5 +1,5 @@
 set clk_port clk
-create_clock -name clk -period 50 [get_ports $clk_port]
+create_clock -name clk -period 20 [get_ports $clk_port]
 set_clock_uncertainty 0.25 [get_clocks clk]
 set_clock_transition 0.15 [get_clocks clk]
 

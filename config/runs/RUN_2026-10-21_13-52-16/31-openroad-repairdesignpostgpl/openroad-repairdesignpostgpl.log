@@ -1,0 +1,87 @@
+Reading timing models for corner nom_tt_025C_1v80…
+Reading timing library for the 'nom_tt_025C_1v80' corner at '/home/codespace/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib'…
+Reading timing models for corner nom_ff_n40C_1v95…
+Reading timing library for the 'nom_ff_n40C_1v95' corner at '/home/codespace/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib'…
+Reading timing models for corner nom_ss_100C_1v60…
+Reading timing library for the 'nom_ss_100C_1v60' corner at '/home/codespace/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib'…
+Reading OpenROAD database at '/workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-52-16/27-openroad-globalplacement/top.odb'…
+Reading design constraints file at '/nix/store/ss2cw3sxbrwwx9jl0rrppbw4kgcmgi2n-python3-3.11.9-env/lib/python3.11/site-packages/openlane/scripts/base.sdc'…
+[INFO] Using clock clk…
+[INFO] Setting output delay to: 10
+[INFO] Setting input delay to: 10
+[INFO] Setting load to: 0.033442
+[INFO] Setting clock uncertainty to: 0.25
+[INFO] Setting clock transition to: 0.1499999999999999944488848768742172978818416595458984375
+[INFO] Setting timing derate to: 5%
+[INFO] Setting RC values…
+[INFO RSZ-0027] Inserted 5 input buffers.
+[INFO RSZ-0028] Inserted 22 output buffers.
+[INFO RSZ-0058] Using max wire length 6335um.
+Iteration | Resized | Buffers | Nets repaired | Remaining
+---------------------------------------------------------
+        0 |       0 |       0 |             0 |       307
+       10 |       5 |       0 |             0 |       297
+       20 |      14 |       0 |             0 |       287
+       30 |      22 |       0 |             0 |       277
+       40 |      30 |       0 |             0 |       267
+       50 |      37 |       0 |             0 |       257
+       60 |      47 |       0 |             0 |       247
+       70 |      54 |       0 |             0 |       237
+       80 |      61 |       0 |             0 |       227
+       90 |      70 |       0 |             0 |       217
+      100 |      80 |       0 |             0 |       207
+      110 |      88 |       0 |             0 |       197
+      120 |      98 |       0 |             0 |       187
+      130 |     108 |       0 |             0 |       177
+      140 |     118 |       0 |             0 |       167
+      150 |     126 |       0 |             0 |       157
+      160 |     135 |       0 |             0 |       147
+      170 |     145 |       2 |             1 |       137
+      180 |     155 |       2 |             1 |       127
+      190 |     165 |       2 |             1 |       117
+      200 |     174 |       2 |             1 |       107
+      210 |     184 |       3 |             2 |        97
+      220 |     190 |       3 |             2 |        87
+      230 |     200 |       3 |             2 |        77
+      240 |     209 |       3 |             2 |        67
+      250 |     216 |       3 |             2 |        57
+      260 |     224 |       3 |             2 |        47
+      270 |     234 |       3 |             2 |        37
+      280 |     244 |       3 |             2 |        27
+      290 |     252 |       3 |             2 |        17
+      300 |     270 |      12 |             3 |         7
+    final |     272 |      12 |             3 |         0
+---------------------------------------------------------
+[INFO RSZ-0035] Found 3 fanout violations.
+[INFO RSZ-0038] Inserted 12 buffers in 3 nets.
+[INFO RSZ-0039] Resized 272 instances.
+Placement Analysis
+---------------------------------
+total displacement        727.4 u
+average displacement        1.4 u
+max displacement           10.0 u
+original HPWL            3939.1 u
+legalized HPWL           4550.9 u
+delta HPWL                   16 %
+
+[INFO DPL-0020] Mirrored 116 instances
+[INFO DPL-0021] HPWL before            4550.9 u
+[INFO DPL-0022] HPWL after             4410.2 u
+[INFO DPL-0023] HPWL delta               -3.1 %
+[INFO] Setting RC values…
+Setting global connections for newly added cells…
+[INFO] Setting global connections...
+Updating metrics…
+Cell type report:                       Count       Area
+  Fill cell                                68     255.24
+  Tap cell                                126     157.65
+  Timing Repair Buffer                     39     212.70
+  Inverter                                 12      45.04
+  Sequential cell                          65    1651.58
+  Multi-Input combinational cell          197    1403.85
+  Total                                   507    3726.07
+Writing OpenROAD database to '/workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-52-16/31-openroad-repairdesignpostgpl/top.odb'…
+Writing netlist to '/workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-52-16/31-openroad-repairdesignpostgpl/top.nl.v'…
+Writing powered netlist to '/workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-52-16/31-openroad-repairdesignpostgpl/top.pnl.v'…
+Writing layout to '/workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-52-16/31-openroad-repairdesignpostgpl/top.def'…
+Writing timing constraints to '/workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-52-16/31-openroad-repairdesignpostgpl/top.sdc'…

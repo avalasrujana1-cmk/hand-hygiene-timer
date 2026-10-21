@@ -1,0 +1,5 @@
+`verilator_config
+lint_off -rule DECLFILENAME
+lint_off -rule EOFNEWLINE
+lint_off -rule UNDRIVEN -file "/workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-59-36/tmp/23f624b4c8de463da35460137a95dac9.bb.v"
+lint_off -rule UNUSEDSIGNAL -file "/workspaces/hand-hygiene-timer/config/runs/RUN_2026-10-21_13-59-36/tmp/23f624b4c8de463da35460137a95dac9.bb.v"
